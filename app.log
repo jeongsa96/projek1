@@ -1,0 +1,875 @@
+INFO 2025-08-20 12:57:02,851 autoreload Watching for file changes with StatReloader
+INFO 2025-08-20 12:58:20,345 autoreload G:\Kerja\projek1\janggadb\views.py changed, reloading.
+INFO 2025-08-20 12:58:25,590 autoreload Watching for file changes with StatReloader
+ERROR 2025-08-20 12:58:27,925 log Internal Server Error: /admin-jangga/invoice-baru
+Traceback (most recent call last):
+  File "G:\Kerja\projek1\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "G:\Kerja\projek1\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "G:\Kerja\projek1\janggadb\views.py", line 86, in Admin_IB
+    logger.warning(f"Data form tidak valid: {form.errors}")
+                                             ^^^^
+NameError: name 'form' is not defined. Did you mean: 'format'?
+INFO 2025-08-20 12:58:34,916 autoreload G:\Kerja\projek1\jangga\settings.py changed, reloading.
+INFO 2025-08-20 12:58:41,601 autoreload Watching for file changes with StatReloader
+WARNING 2025-08-20 12:58:42,932 views Data form tidak valid: <ul class="errorlist"><li>lampiran<ul class="errorlist" id="id_lampiran_error"><li>This field is required.</li></ul></li><li>client_id<ul class="errorlist" id="id_client_id_error"><li>This field is required.</li></ul></li></ul>
+WARNING 2025-08-20 12:58:54,303 views Data form tidak valid: <ul class="errorlist"><li>lampiran<ul class="errorlist" id="id_lampiran_error"><li>This field is required.</li></ul></li><li>client_id<ul class="errorlist" id="id_client_id_error"><li>This field is required.</li></ul></li></ul>
+WARNING 2025-08-20 12:59:15,627 log Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-20 12:59:26,370 views Data form tidak valid: <ul class="errorlist"><li>lampiran<ul class="errorlist" id="id_lampiran_error"><li>This field is required.</li></ul></li><li>client_id<ul class="errorlist" id="id_client_id_error"><li>This field is required.</li></ul></li></ul>
+WARNING 2025-08-20 12:59:26,657 log Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-20 13:00:38,547 views Data form tidak valid: <ul class="errorlist"><li>lampiran<ul class="errorlist" id="id_lampiran_error"><li>This field is required.</li></ul></li><li>client_id<ul class="errorlist" id="id_client_id_error"><li>This field is required.</li></ul></li></ul>
+WARNING 2025-08-20 13:00:38,776 log Not Found: /.well-known/appspecific/com.chrome.devtools.json
+INFO 2025-08-20 13:01:59,726 autoreload G:\Kerja\projek1\janggadb\views.py changed, reloading.
+INFO 2025-08-20 13:02:04,964 autoreload Watching for file changes with StatReloader
+WARNING 2025-08-20 13:02:06,280 views Data form tidak valid: <ul class="errorlist"><li>lampiran<ul class="errorlist" id="id_lampiran_error"><li>This field is required.</li></ul></li><li>client_id<ul class="errorlist" id="id_client_id_error"><li>This field is required.</li></ul></li></ul>
+WARNING 2025-08-20 13:02:06,666 log Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-20 13:02:14,174 views Data form tidak valid: <ul class="errorlist"><li>lampiran<ul class="errorlist" id="id_lampiran_error"><li>This field is required.</li></ul></li><li>client_id<ul class="errorlist" id="id_client_id_error"><li>This field is required.</li></ul></li></ul>
+WARNING 2025-08-20 13:02:14,422 log Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-20 13:03:14,766 views Data form tidak valid: <ul class="errorlist"><li>lampiran<ul class="errorlist" id="id_lampiran_error"><li>This field is required.</li></ul></li><li>client_id<ul class="errorlist" id="id_client_id_error"><li>This field is required.</li></ul></li></ul>
+WARNING 2025-08-20 13:03:15,269 log Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-20 13:03:23,733 views Data form tidak valid: <ul class="errorlist"><li>lampiran<ul class="errorlist" id="id_lampiran_error"><li>This field is required.</li></ul></li></ul>
+WARNING 2025-08-20 13:03:24,092 log Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-20 13:04:57,778 views Data form tidak valid: <ul class="errorlist"><li>lampiran<ul class="errorlist" id="id_lampiran_error"><li>This field is required.</li></ul></li></ul>
+WARNING 2025-08-20 13:04:57,990 log Not Found: /.well-known/appspecific/com.chrome.devtools.json
+INFO 2025-08-20 13:05:19,872 autoreload G:\Kerja\projek1\janggadb\views.py changed, reloading.
+INFO 2025-08-20 13:05:25,169 autoreload Watching for file changes with StatReloader
+WARNING 2025-08-20 13:05:26,620 views Data form tidak valid: <ul class="errorlist"><li>lampiran<ul class="errorlist" id="id_lampiran_error"><li>This field is required.</li></ul></li></ul>
+WARNING 2025-08-20 13:05:26,958 log Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-20 13:05:30,095 views Data form tidak valid: <ul class="errorlist"><li>lampiran<ul class="errorlist" id="id_lampiran_error"><li>This field is required.</li></ul></li></ul>
+WARNING 2025-08-20 13:05:30,314 log Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-20 13:05:57,597 views Data form tidak valid: <ul class="errorlist"><li>lampiran<ul class="errorlist" id="id_lampiran_error"><li>This field is required.</li></ul></li></ul>
+WARNING 2025-08-20 13:05:57,844 log Not Found: /.well-known/appspecific/com.chrome.devtools.json
+INFO 2025-08-20 13:06:38,138 autoreload G:\Kerja\projek1\janggadb\views.py changed, reloading.
+INFO 2025-08-20 13:06:43,966 autoreload Watching for file changes with StatReloader
+WARNING 2025-08-20 13:06:46,911 log Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-20 13:07:11,882 log Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-20 13:08:05,394 log Not Found: /.well-known/appspecific/com.chrome.devtools.json
+INFO 2025-08-20 13:08:53,581 autoreload G:\Kerja\projek1\janggadb\views.py changed, reloading.
+INFO 2025-08-20 13:08:58,570 autoreload Watching for file changes with StatReloader
+WARNING 2025-08-20 13:09:00,202 log Not Found: /.well-known/appspecific/com.chrome.devtools.json
+INFO 2025-08-21 15:01:50,784 autoreload G:\Kerja\projek1\janggadb\views.py changed, reloading.
+INFO 2025-08-21 15:01:59,050 autoreload Watching for file changes with StatReloader
+ERROR 2025-08-21 15:03:57,442 log Internal Server Error: /logistik/document-log
+Traceback (most recent call last):
+  File "G:\Kerja\projek1\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "G:\Kerja\projek1\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "G:\Kerja\projek1\janggadb\views.py", line 117, in Logistik_DL
+    return render(request,'logistik/document-log.html', context)
+  File "G:\Kerja\projek1\.venv\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "G:\Kerja\projek1\.venv\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "G:\Kerja\projek1\.venv\Lib\site-packages\django\template\loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "G:\Kerja\projek1\.venv\Lib\site-packages\django\template\backends\django.py", line 79, in get_template
+    return Template(self.engine.get_template(template_name), self)
+                    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "G:\Kerja\projek1\.venv\Lib\site-packages\django\template\engine.py", line 177, in get_template
+    template, origin = self.find_template(template_name)
+                       ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "G:\Kerja\projek1\.venv\Lib\site-packages\django\template\engine.py", line 159, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "G:\Kerja\projek1\.venv\Lib\site-packages\django\template\loaders\cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+  File "G:\Kerja\projek1\.venv\Lib\site-packages\django\template\loaders\base.py", line 28, in get_template
+    return Template(
+        contents,
+    ...<2 lines>...
+        self.engine,
+    )
+  File "G:\Kerja\projek1\.venv\Lib\site-packages\django\template\base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "G:\Kerja\projek1\.venv\Lib\site-packages\django\template\base.py", line 196, in compile_nodelist
+    nodelist = parser.parse()
+  File "G:\Kerja\projek1\.venv\Lib\site-packages\django\template\base.py", line 518, in parse
+    raise self.error(token, e)
+  File "G:\Kerja\projek1\.venv\Lib\site-packages\django\template\base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+  File "G:\Kerja\projek1\.venv\Lib\site-packages\django\template\loader_tags.py", line 299, in do_extends
+    nodelist = parser.parse()
+  File "G:\Kerja\projek1\.venv\Lib\site-packages\django\template\base.py", line 518, in parse
+    raise self.error(token, e)
+  File "G:\Kerja\projek1\.venv\Lib\site-packages\django\template\base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+  File "G:\Kerja\projek1\.venv\Lib\site-packages\django\template\loader_tags.py", line 234, in do_block
+    nodelist = parser.parse(("endblock",))
+  File "G:\Kerja\projek1\.venv\Lib\site-packages\django\template\base.py", line 489, in parse
+    raise self.error(token, e)
+  File "G:\Kerja\projek1\.venv\Lib\site-packages\django\template\base.py", line 487, in parse
+    filter_expression = self.compile_filter(token.contents)
+  File "G:\Kerja\projek1\.venv\Lib\site-packages\django\template\base.py", line 609, in compile_filter
+    return FilterExpression(token, self)
+  File "G:\Kerja\projek1\.venv\Lib\site-packages\django\template\base.py", line 710, in __init__
+    raise TemplateSyntaxError(
+    ...<2 lines>...
+    )
+django.template.exceptions.TemplateSyntaxError: Could not parse the remainder: ' p in projek' from 'for p in projek'
+ERROR 2025-08-21 15:04:29,754 log Internal Server Error: /logistik/document-log
+Traceback (most recent call last):
+  File "G:\Kerja\projek1\.venv\Lib\site-packages\django\template\base.py", line 510, in parse
+    compile_func = self.tags[command]
+                   ~~~~~~~~~^^^^^^^^^
+KeyError: 'endfor'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "G:\Kerja\projek1\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "G:\Kerja\projek1\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "G:\Kerja\projek1\janggadb\views.py", line 117, in Logistik_DL
+    return render(request,'logistik/document-log.html', context)
+  File "G:\Kerja\projek1\.venv\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "G:\Kerja\projek1\.venv\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "G:\Kerja\projek1\.venv\Lib\site-packages\django\template\loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "G:\Kerja\projek1\.venv\Lib\site-packages\django\template\backends\django.py", line 79, in get_template
+    return Template(self.engine.get_template(template_name), self)
+                    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "G:\Kerja\projek1\.venv\Lib\site-packages\django\template\engine.py", line 177, in get_template
+    template, origin = self.find_template(template_name)
+                       ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "G:\Kerja\projek1\.venv\Lib\site-packages\django\template\engine.py", line 159, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "G:\Kerja\projek1\.venv\Lib\site-packages\django\template\loaders\cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+  File "G:\Kerja\projek1\.venv\Lib\site-packages\django\template\loaders\base.py", line 28, in get_template
+    return Template(
+        contents,
+    ...<2 lines>...
+        self.engine,
+    )
+  File "G:\Kerja\projek1\.venv\Lib\site-packages\django\template\base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "G:\Kerja\projek1\.venv\Lib\site-packages\django\template\base.py", line 196, in compile_nodelist
+    nodelist = parser.parse()
+  File "G:\Kerja\projek1\.venv\Lib\site-packages\django\template\base.py", line 518, in parse
+    raise self.error(token, e)
+  File "G:\Kerja\projek1\.venv\Lib\site-packages\django\template\base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+  File "G:\Kerja\projek1\.venv\Lib\site-packages\django\template\loader_tags.py", line 299, in do_extends
+    nodelist = parser.parse()
+  File "G:\Kerja\projek1\.venv\Lib\site-packages\django\template\base.py", line 518, in parse
+    raise self.error(token, e)
+  File "G:\Kerja\projek1\.venv\Lib\site-packages\django\template\base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+  File "G:\Kerja\projek1\.venv\Lib\site-packages\django\template\loader_tags.py", line 234, in do_block
+    nodelist = parser.parse(("endblock",))
+  File "G:\Kerja\projek1\.venv\Lib\site-packages\django\template\base.py", line 512, in parse
+    self.invalid_block_tag(token, command, parse_until)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "G:\Kerja\projek1\.venv\Lib\site-packages\django\template\base.py", line 567, in invalid_block_tag
+    raise self.error(
+    ...<8 lines>...
+    )
+django.template.exceptions.TemplateSyntaxError: Invalid block tag on line 11: 'endfor', expected 'endblock'. Did you forget to register or load this tag?
+INFO 2025-08-21 15:06:13,144 autoreload G:\Kerja\projek1\janggadb\views.py changed, reloading.
+INFO 2025-08-21 15:06:19,075 autoreload Watching for file changes with StatReloader
+INFO 2025-08-21 15:24:36,542 autoreload G:\Kerja\projek1\janggadb\views.py changed, reloading.
+INFO 2025-08-21 15:24:43,795 autoreload Watching for file changes with StatReloader
+INFO 2025-08-21 15:25:47,744 autoreload G:\Kerja\projek1\janggadb\views.py changed, reloading.
+INFO 2025-08-21 15:25:53,229 autoreload Watching for file changes with StatReloader
+ERROR 2025-08-21 15:27:00,520 log Internal Server Error: /finance/data-invoice
+Traceback (most recent call last):
+  File "G:\Kerja\projek1\.venv\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+psycopg2.errors.UndefinedColumn: column "client_id" does not exist
+LINE 1: SELECT * FROM janggadb_invoice WHERE client_id = ''
+                                             ^
+HINT:  Perhaps you meant to reference the column "janggadb_invoice.client_id_id".
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "G:\Kerja\projek1\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "G:\Kerja\projek1\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "G:\Kerja\projek1\janggadb\views.py", line 131, in Finance_DI
+    return render(request,'finance/data-invoice.html',context)
+  File "G:\Kerja\projek1\.venv\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "G:\Kerja\projek1\.venv\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "G:\Kerja\projek1\.venv\Lib\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "G:\Kerja\projek1\.venv\Lib\site-packages\django\template\base.py", line 171, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "G:\Kerja\projek1\.venv\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "G:\Kerja\projek1\.venv\Lib\site-packages\django\template\base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "G:\Kerja\projek1\.venv\Lib\site-packages\django\template\base.py", line 977, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "G:\Kerja\projek1\.venv\Lib\site-packages\django\template\loader_tags.py", line 159, in render
+    return compiled_parent._render(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "G:\Kerja\projek1\.venv\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "G:\Kerja\projek1\.venv\Lib\site-packages\django\template\base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "G:\Kerja\projek1\.venv\Lib\site-packages\django\template\base.py", line 977, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "G:\Kerja\projek1\.venv\Lib\site-packages\django\template\loader_tags.py", line 65, in render
+    result = block.nodelist.render(context)
+  File "G:\Kerja\projek1\.venv\Lib\site-packages\django\template\base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "G:\Kerja\projek1\.venv\Lib\site-packages\django\template\base.py", line 977, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "G:\Kerja\projek1\.venv\Lib\site-packages\django\template\defaulttags.py", line 326, in render
+    if match:
+       ^^^^^
+  File "G:\Kerja\projek1\.venv\Lib\site-packages\django\db\models\query.py", line 2140, in __bool__
+    self._fetch_all()
+    ~~~~~~~~~~~~~~~^^
+  File "G:\Kerja\projek1\.venv\Lib\site-packages\django\db\models\query.py", line 2131, in _fetch_all
+    self._result_cache = list(self.iterator())
+                         ~~~~^^^^^^^^^^^^^^^^^
+  File "G:\Kerja\projek1\.venv\Lib\site-packages\django\db\models\query.py", line 2158, in iterator
+    yield from RawModelIterable(self)
+  File "G:\Kerja\projek1\.venv\Lib\site-packages\django\db\models\query.py", line 160, in __iter__
+    query_iterator = iter(query)
+  File "G:\Kerja\projek1\.venv\Lib\site-packages\django\db\models\sql\query.py", line 174, in __iter__
+    self._execute_query()
+    ~~~~~~~~~~~~~~~~~~~^^
+  File "G:\Kerja\projek1\.venv\Lib\site-packages\django\db\models\sql\query.py", line 214, in _execute_query
+    self.cursor.execute(self.sql, params)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "G:\Kerja\projek1\.venv\Lib\site-packages\django\db\backends\utils.py", line 122, in execute
+    return super().execute(sql, params)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "G:\Kerja\projek1\.venv\Lib\site-packages\django\db\backends\utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        sql, params, many=False, executor=self._execute
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "G:\Kerja\projek1\.venv\Lib\site-packages\django\db\backends\utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "G:\Kerja\projek1\.venv\Lib\site-packages\django\db\backends\utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "G:\Kerja\projek1\.venv\Lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "G:\Kerja\projek1\.venv\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+django.db.utils.ProgrammingError: column "client_id" does not exist
+LINE 1: SELECT * FROM janggadb_invoice WHERE client_id = ''
+                                             ^
+HINT:  Perhaps you meant to reference the column "janggadb_invoice.client_id_id".
+
+INFO 2025-08-21 15:27:26,589 autoreload G:\Kerja\projek1\janggadb\views.py changed, reloading.
+INFO 2025-08-21 15:27:31,876 autoreload Watching for file changes with StatReloader
+ERROR 2025-08-21 15:27:33,815 log Internal Server Error: /finance/data-invoice
+Traceback (most recent call last):
+  File "G:\Kerja\projek1\.venv\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+psycopg2.errors.InvalidTextRepresentation: invalid input syntax for type bigint: ""
+LINE 1: SELECT * FROM janggadb_invoice WHERE client_id_id = ''
+                                                            ^
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "G:\Kerja\projek1\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "G:\Kerja\projek1\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "G:\Kerja\projek1\janggadb\views.py", line 131, in Finance_DI
+    return render(request,'finance/data-invoice.html',context)
+  File "G:\Kerja\projek1\.venv\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "G:\Kerja\projek1\.venv\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "G:\Kerja\projek1\.venv\Lib\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "G:\Kerja\projek1\.venv\Lib\site-packages\django\template\base.py", line 171, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "G:\Kerja\projek1\.venv\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "G:\Kerja\projek1\.venv\Lib\site-packages\django\template\base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "G:\Kerja\projek1\.venv\Lib\site-packages\django\template\base.py", line 977, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "G:\Kerja\projek1\.venv\Lib\site-packages\django\template\loader_tags.py", line 159, in render
+    return compiled_parent._render(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "G:\Kerja\projek1\.venv\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "G:\Kerja\projek1\.venv\Lib\site-packages\django\template\base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "G:\Kerja\projek1\.venv\Lib\site-packages\django\template\base.py", line 977, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "G:\Kerja\projek1\.venv\Lib\site-packages\django\template\loader_tags.py", line 65, in render
+    result = block.nodelist.render(context)
+  File "G:\Kerja\projek1\.venv\Lib\site-packages\django\template\base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "G:\Kerja\projek1\.venv\Lib\site-packages\django\template\base.py", line 977, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "G:\Kerja\projek1\.venv\Lib\site-packages\django\template\defaulttags.py", line 326, in render
+    if match:
+       ^^^^^
+  File "G:\Kerja\projek1\.venv\Lib\site-packages\django\db\models\query.py", line 2140, in __bool__
+    self._fetch_all()
+    ~~~~~~~~~~~~~~~^^
+  File "G:\Kerja\projek1\.venv\Lib\site-packages\django\db\models\query.py", line 2131, in _fetch_all
+    self._result_cache = list(self.iterator())
+                         ~~~~^^^^^^^^^^^^^^^^^
+  File "G:\Kerja\projek1\.venv\Lib\site-packages\django\db\models\query.py", line 2158, in iterator
+    yield from RawModelIterable(self)
+  File "G:\Kerja\projek1\.venv\Lib\site-packages\django\db\models\query.py", line 160, in __iter__
+    query_iterator = iter(query)
+  File "G:\Kerja\projek1\.venv\Lib\site-packages\django\db\models\sql\query.py", line 174, in __iter__
+    self._execute_query()
+    ~~~~~~~~~~~~~~~~~~~^^
+  File "G:\Kerja\projek1\.venv\Lib\site-packages\django\db\models\sql\query.py", line 214, in _execute_query
+    self.cursor.execute(self.sql, params)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "G:\Kerja\projek1\.venv\Lib\site-packages\django\db\backends\utils.py", line 122, in execute
+    return super().execute(sql, params)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "G:\Kerja\projek1\.venv\Lib\site-packages\django\db\backends\utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        sql, params, many=False, executor=self._execute
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "G:\Kerja\projek1\.venv\Lib\site-packages\django\db\backends\utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "G:\Kerja\projek1\.venv\Lib\site-packages\django\db\backends\utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "G:\Kerja\projek1\.venv\Lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "G:\Kerja\projek1\.venv\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+django.db.utils.DataError: invalid input syntax for type bigint: ""
+LINE 1: SELECT * FROM janggadb_invoice WHERE client_id_id = ''
+                                                            ^
+
+ERROR 2025-08-21 15:28:25,125 log Internal Server Error: /finance/data-invoice
+Traceback (most recent call last):
+  File "G:\Kerja\projek1\.venv\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+psycopg2.errors.InvalidTextRepresentation: invalid input syntax for type bigint: ""
+LINE 1: SELECT * FROM janggadb_invoice WHERE client_id_id = ''
+                                                            ^
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "G:\Kerja\projek1\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "G:\Kerja\projek1\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "G:\Kerja\projek1\janggadb\views.py", line 131, in Finance_DI
+    return render(request,'finance/data-invoice.html',context)
+  File "G:\Kerja\projek1\.venv\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "G:\Kerja\projek1\.venv\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "G:\Kerja\projek1\.venv\Lib\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "G:\Kerja\projek1\.venv\Lib\site-packages\django\template\base.py", line 171, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "G:\Kerja\projek1\.venv\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "G:\Kerja\projek1\.venv\Lib\site-packages\django\template\base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "G:\Kerja\projek1\.venv\Lib\site-packages\django\template\base.py", line 977, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "G:\Kerja\projek1\.venv\Lib\site-packages\django\template\loader_tags.py", line 159, in render
+    return compiled_parent._render(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "G:\Kerja\projek1\.venv\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "G:\Kerja\projek1\.venv\Lib\site-packages\django\template\base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "G:\Kerja\projek1\.venv\Lib\site-packages\django\template\base.py", line 977, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "G:\Kerja\projek1\.venv\Lib\site-packages\django\template\loader_tags.py", line 65, in render
+    result = block.nodelist.render(context)
+  File "G:\Kerja\projek1\.venv\Lib\site-packages\django\template\base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "G:\Kerja\projek1\.venv\Lib\site-packages\django\template\base.py", line 977, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "G:\Kerja\projek1\.venv\Lib\site-packages\django\template\defaulttags.py", line 326, in render
+    if match:
+       ^^^^^
+  File "G:\Kerja\projek1\.venv\Lib\site-packages\django\db\models\query.py", line 2140, in __bool__
+    self._fetch_all()
+    ~~~~~~~~~~~~~~~^^
+  File "G:\Kerja\projek1\.venv\Lib\site-packages\django\db\models\query.py", line 2131, in _fetch_all
+    self._result_cache = list(self.iterator())
+                         ~~~~^^^^^^^^^^^^^^^^^
+  File "G:\Kerja\projek1\.venv\Lib\site-packages\django\db\models\query.py", line 2158, in iterator
+    yield from RawModelIterable(self)
+  File "G:\Kerja\projek1\.venv\Lib\site-packages\django\db\models\query.py", line 160, in __iter__
+    query_iterator = iter(query)
+  File "G:\Kerja\projek1\.venv\Lib\site-packages\django\db\models\sql\query.py", line 174, in __iter__
+    self._execute_query()
+    ~~~~~~~~~~~~~~~~~~~^^
+  File "G:\Kerja\projek1\.venv\Lib\site-packages\django\db\models\sql\query.py", line 214, in _execute_query
+    self.cursor.execute(self.sql, params)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "G:\Kerja\projek1\.venv\Lib\site-packages\django\db\backends\utils.py", line 122, in execute
+    return super().execute(sql, params)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "G:\Kerja\projek1\.venv\Lib\site-packages\django\db\backends\utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        sql, params, many=False, executor=self._execute
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "G:\Kerja\projek1\.venv\Lib\site-packages\django\db\backends\utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "G:\Kerja\projek1\.venv\Lib\site-packages\django\db\backends\utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "G:\Kerja\projek1\.venv\Lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "G:\Kerja\projek1\.venv\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+django.db.utils.DataError: invalid input syntax for type bigint: ""
+LINE 1: SELECT * FROM janggadb_invoice WHERE client_id_id = ''
+                                                            ^
+
+WARNING 2025-08-21 15:28:39,602 log Not Found: /.well-known/appspecific/com.chrome.devtools.json
+ERROR 2025-08-21 15:31:34,253 log Internal Server Error: /finance/data-invoice
+Traceback (most recent call last):
+  File "G:\Kerja\projek1\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "G:\Kerja\projek1\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "G:\Kerja\projek1\janggadb\views.py", line 131, in Finance_DI
+    return render(request,'finance/data-invoice.html',context)
+  File "G:\Kerja\projek1\.venv\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "G:\Kerja\projek1\.venv\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "G:\Kerja\projek1\.venv\Lib\site-packages\django\template\loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "G:\Kerja\projek1\.venv\Lib\site-packages\django\template\backends\django.py", line 79, in get_template
+    return Template(self.engine.get_template(template_name), self)
+                    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "G:\Kerja\projek1\.venv\Lib\site-packages\django\template\engine.py", line 177, in get_template
+    template, origin = self.find_template(template_name)
+                       ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "G:\Kerja\projek1\.venv\Lib\site-packages\django\template\engine.py", line 159, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "G:\Kerja\projek1\.venv\Lib\site-packages\django\template\loaders\cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+  File "G:\Kerja\projek1\.venv\Lib\site-packages\django\template\loaders\base.py", line 28, in get_template
+    return Template(
+        contents,
+    ...<2 lines>...
+        self.engine,
+    )
+  File "G:\Kerja\projek1\.venv\Lib\site-packages\django\template\base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "G:\Kerja\projek1\.venv\Lib\site-packages\django\template\base.py", line 196, in compile_nodelist
+    nodelist = parser.parse()
+  File "G:\Kerja\projek1\.venv\Lib\site-packages\django\template\base.py", line 518, in parse
+    raise self.error(token, e)
+  File "G:\Kerja\projek1\.venv\Lib\site-packages\django\template\base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+  File "G:\Kerja\projek1\.venv\Lib\site-packages\django\template\loader_tags.py", line 299, in do_extends
+    nodelist = parser.parse()
+  File "G:\Kerja\projek1\.venv\Lib\site-packages\django\template\base.py", line 518, in parse
+    raise self.error(token, e)
+  File "G:\Kerja\projek1\.venv\Lib\site-packages\django\template\base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+  File "G:\Kerja\projek1\.venv\Lib\site-packages\django\template\loader_tags.py", line 234, in do_block
+    nodelist = parser.parse(("endblock",))
+  File "G:\Kerja\projek1\.venv\Lib\site-packages\django\template\base.py", line 518, in parse
+    raise self.error(token, e)
+  File "G:\Kerja\projek1\.venv\Lib\site-packages\django\template\base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+  File "G:\Kerja\projek1\.venv\Lib\site-packages\django\template\defaulttags.py", line 962, in do_if
+    nodelist = parser.parse(("elif", "else", "endif"))
+  File "G:\Kerja\projek1\.venv\Lib\site-packages\django\template\base.py", line 518, in parse
+    raise self.error(token, e)
+  File "G:\Kerja\projek1\.venv\Lib\site-packages\django\template\base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+  File "G:\Kerja\projek1\.venv\Lib\site-packages\django\template\defaulttags.py", line 862, in do_for
+    nodelist_loop = parser.parse(
+        (
+    ...<2 lines>...
+        )
+    )
+  File "G:\Kerja\projek1\.venv\Lib\site-packages\django\template\base.py", line 518, in parse
+    raise self.error(token, e)
+  File "G:\Kerja\projek1\.venv\Lib\site-packages\django\template\base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+  File "G:\Kerja\projek1\.venv\Lib\site-packages\django\templatetags\static.py", line 171, in do_static
+    return StaticNode.handle_token(parser, token)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "G:\Kerja\projek1\.venv\Lib\site-packages\django\templatetags\static.py", line 145, in handle_token
+    path = parser.compile_filter(bits[1])
+  File "G:\Kerja\projek1\.venv\Lib\site-packages\django\template\base.py", line 609, in compile_filter
+    return FilterExpression(token, self)
+  File "G:\Kerja\projek1\.venv\Lib\site-packages\django\template\base.py", line 710, in __init__
+    raise TemplateSyntaxError(
+    ...<2 lines>...
+    )
+django.template.exceptions.TemplateSyntaxError: Could not parse the remainder: '{{' from '{{'
+INFO 2025-08-21 16:17:47,998 autoreload G:\Kerja\projek1\janggadb\views.py changed, reloading.
+INFO 2025-08-21 16:17:58,660 autoreload Watching for file changes with StatReloader
+INFO 2025-08-23 15:14:44,959 autoreload Watching for file changes with StatReloader
+INFO 2025-08-23 15:16:55,325 autoreload G:\Kerja\projek1\jangga\settings.py changed, reloading.
+INFO 2025-08-23 15:17:06,043 autoreload Watching for file changes with StatReloader
+INFO 2025-08-23 15:19:53,923 autoreload G:\Kerja\projek1\janggadb\views.py changed, reloading.
+INFO 2025-08-23 15:20:00,913 autoreload Watching for file changes with StatReloader
+INFO 2025-08-23 15:21:05,577 autoreload G:\Kerja\projek1\janggadb\views.py changed, reloading.
+INFO 2025-08-23 15:21:18,271 autoreload Watching for file changes with StatReloader
+INFO 2025-08-23 15:24:35,373 autoreload G:\Kerja\projek1\janggadb\models.py changed, reloading.
+INFO 2025-08-23 15:24:39,321 autoreload Watching for file changes with StatReloader
+INFO 2025-08-23 15:37:43,577 autoreload G:\Kerja\projek1\janggadb\models.py changed, reloading.
+INFO 2025-08-23 15:37:47,596 autoreload Watching for file changes with StatReloader
+INFO 2025-08-23 15:39:40,205 autoreload G:\Kerja\projek1\janggadb\models.py changed, reloading.
+INFO 2025-08-23 15:39:45,405 autoreload Watching for file changes with StatReloader
+INFO 2025-08-23 15:41:57,679 autoreload G:\Kerja\projek1\janggadb\models.py changed, reloading.
+INFO 2025-08-23 15:42:01,119 autoreload Watching for file changes with StatReloader
+INFO 2025-08-23 15:43:05,423 autoreload G:\Kerja\projek1\janggadb\models.py changed, reloading.
+INFO 2025-08-23 15:43:08,760 autoreload Watching for file changes with StatReloader
+INFO 2025-08-23 15:47:14,218 autoreload G:\Kerja\projek1\janggadb\models.py changed, reloading.
+INFO 2025-08-23 15:47:19,668 autoreload Watching for file changes with StatReloader
+INFO 2025-08-23 15:48:14,586 autoreload G:\Kerja\projek1\janggadb\models.py changed, reloading.
+INFO 2025-08-23 15:48:18,282 autoreload Watching for file changes with StatReloader
+INFO 2025-08-23 15:49:12,973 autoreload G:\Kerja\projek1\janggadb\models.py changed, reloading.
+INFO 2025-08-23 15:49:16,580 autoreload Watching for file changes with StatReloader
+INFO 2025-08-23 15:51:07,515 autoreload G:\Kerja\projek1\janggadb\views.py changed, reloading.
+INFO 2025-08-23 15:51:12,916 autoreload Watching for file changes with StatReloader
+INFO 2025-08-23 15:54:52,123 autoreload G:\Kerja\projek1\janggadb\forms.py changed, reloading.
+INFO 2025-08-23 15:54:56,798 autoreload Watching for file changes with StatReloader
+INFO 2025-08-23 15:55:22,872 autoreload G:\Kerja\projek1\janggadb\forms.py changed, reloading.
+INFO 2025-08-23 15:55:27,313 autoreload Watching for file changes with StatReloader
+INFO 2025-08-23 15:56:53,997 autoreload G:\Kerja\projek1\janggadb\forms.py changed, reloading.
+INFO 2025-08-23 15:56:57,354 autoreload Watching for file changes with StatReloader
+INFO 2025-08-23 15:58:01,971 autoreload G:\Kerja\projek1\janggadb\forms.py changed, reloading.
+INFO 2025-08-23 15:58:06,746 autoreload Watching for file changes with StatReloader
+INFO 2025-08-23 16:02:48,112 autoreload G:\Kerja\projek1\janggadb\forms.py changed, reloading.
+INFO 2025-08-23 16:02:52,466 autoreload Watching for file changes with StatReloader
+INFO 2025-08-23 16:05:28,975 autoreload G:\Kerja\projek1\janggadb\forms.py changed, reloading.
+INFO 2025-08-23 16:05:32,885 autoreload Watching for file changes with StatReloader
+INFO 2025-08-23 16:06:39,701 autoreload G:\Kerja\projek1\janggadb\forms.py changed, reloading.
+INFO 2025-08-23 16:06:47,696 autoreload Watching for file changes with StatReloader
+INFO 2025-08-23 16:08:08,159 autoreload G:\Kerja\projek1\janggadb\forms.py changed, reloading.
+INFO 2025-08-23 16:08:13,519 autoreload Watching for file changes with StatReloader
+INFO 2025-08-23 16:08:31,031 autoreload Watching for file changes with StatReloader
+INFO 2025-08-23 16:09:51,733 autoreload G:\Kerja\projek1\janggadb\forms.py changed, reloading.
+INFO 2025-08-23 16:09:58,460 autoreload Watching for file changes with StatReloader
+INFO 2025-08-23 16:10:56,979 autoreload G:\Kerja\projek1\janggadb\forms.py changed, reloading.
+INFO 2025-08-23 16:11:02,844 autoreload Watching for file changes with StatReloader
+INFO 2025-08-23 16:12:04,173 autoreload G:\Kerja\projek1\janggadb\forms.py changed, reloading.
+INFO 2025-08-23 16:12:10,150 autoreload Watching for file changes with StatReloader
+INFO 2025-08-23 16:12:43,853 autoreload G:\Kerja\projek1\janggadb\forms.py changed, reloading.
+INFO 2025-08-23 16:12:48,599 autoreload Watching for file changes with StatReloader
+INFO 2025-08-23 16:13:09,101 autoreload G:\Kerja\projek1\janggadb\forms.py changed, reloading.
+INFO 2025-08-23 16:13:13,767 autoreload Watching for file changes with StatReloader
+INFO 2025-08-23 16:13:22,914 autoreload G:\Kerja\projek1\janggadb\forms.py changed, reloading.
+INFO 2025-08-23 16:13:27,637 autoreload Watching for file changes with StatReloader
+INFO 2025-08-23 16:14:42,306 autoreload G:\Kerja\projek1\janggadb\forms.py changed, reloading.
+INFO 2025-08-23 16:14:48,041 autoreload Watching for file changes with StatReloader
+INFO 2025-08-23 16:16:21,318 autoreload G:\Kerja\projek1\janggadb\forms.py changed, reloading.
+INFO 2025-08-23 16:16:30,002 autoreload Watching for file changes with StatReloader
+INFO 2025-08-23 16:16:48,165 autoreload G:\Kerja\projek1\janggadb\forms.py changed, reloading.
+INFO 2025-08-23 16:16:52,672 autoreload Watching for file changes with StatReloader
+INFO 2025-08-23 16:20:34,113 autoreload G:\Kerja\projek1\janggadb\forms.py changed, reloading.
+INFO 2025-08-23 16:20:38,569 autoreload Watching for file changes with StatReloader
+INFO 2025-08-23 16:21:07,880 autoreload G:\Kerja\projek1\janggadb\forms.py changed, reloading.
+INFO 2025-08-23 16:21:13,609 autoreload Watching for file changes with StatReloader
+INFO 2025-08-23 16:34:31,330 autoreload G:\Kerja\projek1\janggadb\forms.py changed, reloading.
+INFO 2025-08-23 16:34:38,227 autoreload Watching for file changes with StatReloader
+INFO 2025-08-23 17:05:45,753 autoreload G:\Kerja\projek1\janggadb\views.py changed, reloading.
+INFO 2025-08-23 17:05:51,050 autoreload Watching for file changes with StatReloader
+INFO 2025-08-24 16:22:59,452 autoreload G:\Kerja\projek1\janggadb\views.py changed, reloading.
+INFO 2025-08-24 16:23:13,533 autoreload Watching for file changes with StatReloader
+INFO 2025-08-24 16:23:53,036 autoreload G:\Kerja\projek1\janggadb\views.py changed, reloading.
+INFO 2025-08-24 16:23:57,250 autoreload Watching for file changes with StatReloader
+INFO 2025-08-24 16:25:42,382 autoreload G:\Kerja\projek1\janggadb\views.py changed, reloading.
+INFO 2025-08-24 16:25:49,168 autoreload Watching for file changes with StatReloader
+INFO 2025-08-24 16:26:45,145 autoreload G:\Kerja\projek1\janggadb\views.py changed, reloading.
+INFO 2025-08-24 16:26:56,182 autoreload Watching for file changes with StatReloader
+INFO 2025-08-24 16:28:35,273 autoreload G:\Kerja\projek1\janggadb\views.py changed, reloading.
+INFO 2025-08-24 16:28:41,513 autoreload Watching for file changes with StatReloader
+ERROR 2025-08-24 16:28:44,819 log Internal Server Error: /admin-jangga/projek-db
+Traceback (most recent call last):
+  File "G:\Kerja\projek1\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "G:\Kerja\projek1\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "G:\Kerja\projek1\.venv\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "G:\Kerja\projek1\janggadb\views.py", line 92, in Admin_PD
+    return render(request, 'admin/projek-db.html',{'projek':projek})
+  File "G:\Kerja\projek1\.venv\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "G:\Kerja\projek1\.venv\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "G:\Kerja\projek1\.venv\Lib\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "G:\Kerja\projek1\.venv\Lib\site-packages\django\template\base.py", line 171, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "G:\Kerja\projek1\.venv\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "G:\Kerja\projek1\.venv\Lib\site-packages\django\template\base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "G:\Kerja\projek1\.venv\Lib\site-packages\django\template\base.py", line 977, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "G:\Kerja\projek1\.venv\Lib\site-packages\django\template\loader_tags.py", line 159, in render
+    return compiled_parent._render(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "G:\Kerja\projek1\.venv\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "G:\Kerja\projek1\.venv\Lib\site-packages\django\template\base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "G:\Kerja\projek1\.venv\Lib\site-packages\django\template\base.py", line 977, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "G:\Kerja\projek1\.venv\Lib\site-packages\django\template\loader_tags.py", line 65, in render
+    result = block.nodelist.render(context)
+  File "G:\Kerja\projek1\.venv\Lib\site-packages\django\template\base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "G:\Kerja\projek1\.venv\Lib\site-packages\django\template\base.py", line 977, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "G:\Kerja\projek1\.venv\Lib\site-packages\django\template\defaulttags.py", line 326, in render
+    if match:
+       ^^^^^
+  File "G:\Kerja\projek1\.venv\Lib\site-packages\django\db\models\query.py", line 398, in __bool__
+    self._fetch_all()
+    ~~~~~~~~~~~~~~~^^
+  File "G:\Kerja\projek1\.venv\Lib\site-packages\django\db\models\query.py", line 1949, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+                         ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "G:\Kerja\projek1\.venv\Lib\site-packages\django\db\models\query.py", line 91, in __iter__
+    results = compiler.execute_sql(
+        chunked_fetch=self.chunked_fetch, chunk_size=self.chunk_size
+    )
+  File "G:\Kerja\projek1\.venv\Lib\site-packages\django\db\models\sql\compiler.py", line 1610, in execute_sql
+    sql, params = self.as_sql()
+                  ~~~~~~~~~~~^^
+  File "G:\Kerja\projek1\.venv\Lib\site-packages\django\db\models\sql\compiler.py", line 766, in as_sql
+    extra_select, order_by, group_by = self.pre_sql_setup(
+                                       ~~~~~~~~~~~~~~~~~~^
+        with_col_aliases=with_col_aliases or bool(combinator),
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "G:\Kerja\projek1\.venv\Lib\site-packages\django\db\models\sql\compiler.py", line 85, in pre_sql_setup
+    self.setup_query(with_col_aliases=with_col_aliases)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "G:\Kerja\projek1\.venv\Lib\site-packages\django\db\models\sql\compiler.py", line 74, in setup_query
+    self.select, self.klass_info, self.annotation_col_map = self.get_select(
+                                                            ~~~~~~~~~~~~~~~^
+        with_col_aliases=with_col_aliases,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "G:\Kerja\projek1\.venv\Lib\site-packages\django\db\models\sql\compiler.py", line 299, in get_select
+    related_klass_infos = self.get_related_selections(select, select_mask)
+  File "G:\Kerja\projek1\.venv\Lib\site-packages\django\db\models\sql\compiler.py", line 1230, in get_related_selections
+    raise FieldError(
+    ...<6 lines>...
+    )
+django.core.exceptions.FieldError: Non-relational field given in select_related: 'jenis_projek'. Choices are: (none)
+INFO 2025-08-24 16:29:04,751 autoreload G:\Kerja\projek1\janggadb\views.py changed, reloading.
+INFO 2025-08-24 16:29:09,893 autoreload Watching for file changes with StatReloader
+ERROR 2025-08-24 16:29:11,549 log Internal Server Error: /admin-jangga/projek-db
+Traceback (most recent call last):
+  File "G:\Kerja\projek1\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "G:\Kerja\projek1\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "G:\Kerja\projek1\.venv\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "G:\Kerja\projek1\janggadb\views.py", line 92, in Admin_PD
+    return render(request, 'admin/projek-db.html',{'projek':projek})
+  File "G:\Kerja\projek1\.venv\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "G:\Kerja\projek1\.venv\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "G:\Kerja\projek1\.venv\Lib\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "G:\Kerja\projek1\.venv\Lib\site-packages\django\template\base.py", line 171, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "G:\Kerja\projek1\.venv\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "G:\Kerja\projek1\.venv\Lib\site-packages\django\template\base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "G:\Kerja\projek1\.venv\Lib\site-packages\django\template\base.py", line 977, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "G:\Kerja\projek1\.venv\Lib\site-packages\django\template\loader_tags.py", line 159, in render
+    return compiled_parent._render(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "G:\Kerja\projek1\.venv\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "G:\Kerja\projek1\.venv\Lib\site-packages\django\template\base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "G:\Kerja\projek1\.venv\Lib\site-packages\django\template\base.py", line 977, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "G:\Kerja\projek1\.venv\Lib\site-packages\django\template\loader_tags.py", line 65, in render
+    result = block.nodelist.render(context)
+  File "G:\Kerja\projek1\.venv\Lib\site-packages\django\template\base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "G:\Kerja\projek1\.venv\Lib\site-packages\django\template\base.py", line 977, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "G:\Kerja\projek1\.venv\Lib\site-packages\django\template\defaulttags.py", line 326, in render
+    if match:
+       ^^^^^
+  File "G:\Kerja\projek1\.venv\Lib\site-packages\django\db\models\query.py", line 398, in __bool__
+    self._fetch_all()
+    ~~~~~~~~~~~~~~~^^
+  File "G:\Kerja\projek1\.venv\Lib\site-packages\django\db\models\query.py", line 1949, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+                         ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "G:\Kerja\projek1\.venv\Lib\site-packages\django\db\models\query.py", line 91, in __iter__
+    results = compiler.execute_sql(
+        chunked_fetch=self.chunked_fetch, chunk_size=self.chunk_size
+    )
+  File "G:\Kerja\projek1\.venv\Lib\site-packages\django\db\models\sql\compiler.py", line 1610, in execute_sql
+    sql, params = self.as_sql()
+                  ~~~~~~~~~~~^^
+  File "G:\Kerja\projek1\.venv\Lib\site-packages\django\db\models\sql\compiler.py", line 766, in as_sql
+    extra_select, order_by, group_by = self.pre_sql_setup(
+                                       ~~~~~~~~~~~~~~~~~~^
+        with_col_aliases=with_col_aliases or bool(combinator),
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "G:\Kerja\projek1\.venv\Lib\site-packages\django\db\models\sql\compiler.py", line 85, in pre_sql_setup
+    self.setup_query(with_col_aliases=with_col_aliases)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "G:\Kerja\projek1\.venv\Lib\site-packages\django\db\models\sql\compiler.py", line 74, in setup_query
+    self.select, self.klass_info, self.annotation_col_map = self.get_select(
+                                                            ~~~~~~~~~~~~~~~^
+        with_col_aliases=with_col_aliases,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "G:\Kerja\projek1\.venv\Lib\site-packages\django\db\models\sql\compiler.py", line 299, in get_select
+    related_klass_infos = self.get_related_selections(select, select_mask)
+  File "G:\Kerja\projek1\.venv\Lib\site-packages\django\db\models\sql\compiler.py", line 1230, in get_related_selections
+    raise FieldError(
+    ...<6 lines>...
+    )
+django.core.exceptions.FieldError: Non-relational field given in select_related: 'jenis_projek'. Choices are: (none)
+INFO 2025-08-24 16:34:58,064 autoreload G:\Kerja\projek1\janggadb\views.py changed, reloading.
+INFO 2025-08-24 16:35:06,777 autoreload Watching for file changes with StatReloader
+INFO 2025-08-24 16:35:24,204 autoreload G:\Kerja\projek1\janggadb\views.py changed, reloading.
+INFO 2025-08-24 16:35:30,065 autoreload Watching for file changes with StatReloader
+INFO 2025-08-24 16:36:03,810 autoreload G:\Kerja\projek1\janggadb\views.py changed, reloading.
+INFO 2025-08-24 16:36:08,862 autoreload Watching for file changes with StatReloader
+INFO 2025-08-24 16:36:37,412 autoreload G:\Kerja\projek1\janggadb\views.py changed, reloading.
+INFO 2025-08-24 16:36:41,809 autoreload Watching for file changes with StatReloader
+INFO 2025-08-24 16:36:51,009 autoreload G:\Kerja\projek1\janggadb\views.py changed, reloading.
+INFO 2025-08-24 16:36:58,472 autoreload Watching for file changes with StatReloader
+INFO 2025-08-24 16:40:06,417 autoreload G:\Kerja\projek1\janggadb\views.py changed, reloading.
+INFO 2025-08-24 16:40:12,855 autoreload Watching for file changes with StatReloader
+INFO 2025-08-24 16:41:22,101 autoreload G:\Kerja\projek1\janggadb\views.py changed, reloading.
+INFO 2025-08-24 16:41:27,179 autoreload Watching for file changes with StatReloader
+INFO 2025-08-24 16:41:59,007 autoreload G:\Kerja\projek1\janggadb\urls.py changed, reloading.
+INFO 2025-08-24 16:42:04,954 autoreload Watching for file changes with StatReloader
+WARNING 2025-08-24 18:38:39,045 log Not Found: /.well-known/appspecific/com.chrome.devtools.json
+INFO 2025-08-24 18:39:14,212 autoreload G:\Kerja\projek1\janggadb\views.py changed, reloading.
+INFO 2025-08-24 18:39:20,622 autoreload Watching for file changes with StatReloader
+WARNING 2025-08-24 18:39:22,742 log Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-24 18:42:16,013 log Not Found: /.well-known/appspecific/com.chrome.devtools.json
+INFO 2025-08-24 18:42:19,642 autoreload G:\Kerja\projek1\janggadb\views.py changed, reloading.
+INFO 2025-08-24 18:42:26,482 autoreload Watching for file changes with StatReloader
+WARNING 2025-08-24 18:42:29,569 log Not Found: /.well-known/appspecific/com.chrome.devtools.json
+INFO 2025-08-24 18:42:51,069 autoreload G:\Kerja\projek1\janggadb\views.py changed, reloading.
+INFO 2025-08-24 18:42:55,227 autoreload Watching for file changes with StatReloader
+WARNING 2025-08-24 18:42:57,163 log Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-24 18:43:02,969 log Forbidden (CSRF token missing.): /admin-jangga/po-request
+WARNING 2025-08-24 18:43:19,808 log Forbidden (CSRF token missing.): /admin-jangga/po-request
+WARNING 2025-08-24 18:43:39,377 log Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-24 18:44:07,290 log Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-24 18:44:10,995 log Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-24 18:44:29,331 log Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-24 18:44:33,228 log Not Found: /.well-known/appspecific/com.chrome.devtools.json
+INFO 2025-08-24 18:45:31,362 autoreload G:\Kerja\projek1\janggadb\views.py changed, reloading.
+INFO 2025-08-24 18:45:37,966 autoreload Watching for file changes with StatReloader
+WARNING 2025-08-24 18:45:40,322 log Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-24 18:45:56,002 log Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-24 18:46:00,505 log Not Found: /.well-known/appspecific/com.chrome.devtools.json
+INFO 2025-08-24 18:47:37,242 autoreload G:\Kerja\projek1\janggadb\admin.py changed, reloading.
+INFO 2025-08-24 18:47:42,327 autoreload Watching for file changes with StatReloader

@@ -1,0 +1,26 @@
+{% extends "admin/layout.html" %}
+{% load static %}
+
+{% block content %}
+    <fieldset class="fieldset">
+        <form method="post">
+            {% csrf_token %}
+            <legend class="fieldset-legend">Projek</legend>
+            <select class="select validator" required name="pilihan" id="pilihan">
+                <option disabled selected value="">Pilih Projek</option>
+                {% if projek %}
+                    {% for p in projek %}
+                        <option value={{ p.id }}>{{ p.client }}</option>   
+                    {% endfor %}             
+                {% endif %}
+            </select>
+            <p class="validator-hint">Required</p>
+            <button class="btn btn-success" type="submit">Submit</button>
+        </form>
+    </fieldset>
+    {% if client_po %}
+        {% for c in client_po %}
+        <div class="text-2xl font-bold">{{ c.deskripsi_barang }}</div>
+        {% endfor %}
+    {% endif %}
+{% endblock %}

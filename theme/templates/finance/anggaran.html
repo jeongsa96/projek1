@@ -1,0 +1,17 @@
+{% extends "finance/layout.html" %}
+{% load static %}
+
+{% block content %}
+    <fieldset class="fieldset">
+        <form method="post">
+            <legend class="fieldset-legend">Anggaran</legend>
+            <select class="select validator" required>
+                <option disabled selected value="">Pilih data anggaran</option>
+                <option>GAJI PROJECT MANAGER</option>
+                <option>GAJI SITE MANAGER</option>
+            </select>
+            <p class="validator-hint">Required</p>
+            <button class="btn btn-success" type="submit">Submit</button>
+        </form>
+    </fieldset>
+{% endblock %}

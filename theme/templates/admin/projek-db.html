@@ -1,0 +1,20 @@
+{% extends "admin/layout.html" %}
+{% load static %}
+
+{% block content %}
+    <fieldset class="fieldset">
+        <form method="post">
+            <legend class="fieldset-legend">Projek</legend>
+            <select class="select validator" required>
+                <option disabled selected value="">Pilih Projek</option>
+                {% if projek %}
+                    {% for p in projek %}
+                        <option value={{ p.client }}>{{ p.client }}</option>   
+                    {% endfor %}             
+                {% endif %}
+            </select>
+            <p class="validator-hint">Required</p>
+            <button class="btn btn-success" type="submit">Submit</button>
+        </form>
+    </fieldset>
+{% endblock %}

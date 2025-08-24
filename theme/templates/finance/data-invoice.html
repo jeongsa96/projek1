@@ -1,0 +1,50 @@
+{% extends "finance/layout.html" %}
+{% load static %}
+{% block content %}
+    <fieldset class="fieldset">
+        <form method="post">
+            {% csrf_token %}
+            <legend class="fieldset-legend">Projek</legend>
+            <select  class="select validator" id="pilihan" name="pilihan" required>
+                <option disabled selected value="">Pilih Projek</option>
+                {% for p in projek %}
+                    <option value="{{ p.id }}">{{ p.client}}</option>
+                {% endfor %}
+            </select>
+            <p class="validator-hint">Required</p>
+            <button class="btn btn-success" type="submit">Submit</button>
+
+        </form>
+    </fieldset>
+    {% if invoice %}
+        <table class="table table-sm mt-4">
+            <thead>
+            <tr>
+                <th></th>
+                <th>No. Invoice</th>
+                <th>Client</th>
+                <th>Jumlah Tagihan</th>
+                <th>Tanggal Terbit</th>
+                <th>Tanggal Jatuh Tempo</th>
+                <th>Lampiran</th>
+                <th>Status</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for i in invoice %}
+                <tr>
+                    <th>{{ forloop.counter }}</th>
+                    <td>{{ i.nomor_invoice}}</td>
+                    <td>{{ i.client_id}}</td>
+                    <td>{{ i.jumlah_tagihan}}</td>
+                    <td>{{ i.tanggal_invoice}}</td>
+                    <td>{{ i.tanggal_jatuh_tempo}}</td>
+                    <td><a class="link link-info" href="{{ i.lampiran.url }}">{{ i.get_filename}}</a></td>
+                    <td>{{ i.status}}</td>
+                </tr>   
+            {% endfor %}      
+            </tbody>
+        </table>
+    </div>
+    {% endif %}   
+{% endblock %}
