@@ -1232,6 +1232,49 @@
   .my-4 {
     margin-block: calc(var(--spacing) * 4);
   }
+  .label {
+    display: inline-flex;
+    align-items: center;
+    gap: calc(0.25rem * 1.5);
+    white-space: nowrap;
+    color: currentColor;
+  }
+  @supports (color: color-mix(in lab, red, red)) {
+    .label {
+      color: color-mix(in oklab, currentColor 60%, transparent);
+    }
+  }
+  .label:has(input) {
+    cursor: pointer;
+  }
+  .label:is(.input > *, .select > *) {
+    display: flex;
+    height: calc(100% - 0.5rem);
+    align-items: center;
+    padding-inline: calc(0.25rem * 3);
+    white-space: nowrap;
+    font-size: inherit;
+  }
+  .label:is(.input > *, .select > *):first-child {
+    margin-inline-start: calc(0.25rem * -3);
+    margin-inline-end: calc(0.25rem * 3);
+    border-inline-end: var(--border) solid currentColor;
+  }
+  @supports (color: color-mix(in lab, red, red)) {
+    .label:is(.input > *, .select > *):first-child {
+      border-inline-end: var(--border) solid color-mix(in oklab, currentColor 10%, #0000);
+    }
+  }
+  .label:is(.input > *, .select > *):last-child {
+    margin-inline-start: calc(0.25rem * 3);
+    margin-inline-end: calc(0.25rem * -3);
+    border-inline-start: var(--border) solid currentColor;
+  }
+  @supports (color: color-mix(in lab, red, red)) {
+    .label:is(.input > *, .select > *):last-child {
+      border-inline-start: var(--border) solid color-mix(in oklab, currentColor 10%, #0000);
+    }
+  }
   .ms-1 {
     margin-inline-start: calc(var(--spacing) * 1);
   }

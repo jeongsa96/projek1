@@ -39,8 +39,19 @@
                     <td>{{ i.jumlah_tagihan}}</td>
                     <td>{{ i.tanggal_invoice}}</td>
                     <td>{{ i.tanggal_jatuh_tempo}}</td>
-                    <td><a class="link link-info" href="{{ i.lampiran.url }}">{{ i.get_filename}}</a></td>
-                    <td>{{ i.status}}</td>
+                    <td><a class="link link-info" href="{{ i.lampiran.url }}" target="_blank">{{ i.get_filename}}</a></td>
+                    <td>
+                        <fieldset class="fieldset">
+                            <form method="post">
+                                {% csrf_token %}
+                                <select  class="select" id="status" name="status" required>
+                                    <option disabled selected value="">Status</option>
+                                    <option value="belum_lunas">Belum Lunas</option>
+                                    <option value="lunas">Lunas</option>
+                                </select>
+                            </form>
+                        </fieldset>
+                    </td>
                 </tr>   
             {% endfor %}      
             </tbody>

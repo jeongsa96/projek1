@@ -15,12 +15,49 @@
                 {% endif %}
             </select>
             <p class="validator-hint">Required</p>
-            <button class="btn btn-success" type="submit">Submit</button>
+            <button class="btn btn-success" type="submit" id="inputClient" name="inputClient">Submit</button>
         </form>
     </fieldset>
     {% if client_po %}
-        {% for c in client_po %}
-        <div class="text-2xl font-bold">{{ c.deskripsi_barang }}</div>
-        {% endfor %}
-    {% endif %}
+        <table class="table table-sm mt-4">
+            <thead>
+            <tr>
+                <th>No. PO</th>
+                <th>Vendor</th>
+                <th>Deskripsi Barang</th>
+                <th>Tipe</th>
+                <th>Tanggal PO</th>
+                <th>Total Tagihan</th>
+                <th>Status</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for c in client_po %}
+                <tr>
+                    <td>{{ c.nomor_po }}</td>
+                    <td>{{ c.vendor }}</td>
+                    <td>{{ c.deskripsi_barang }}</td>
+                    <td>{{ c.tipe }}</td>
+                    <td>{{ c.tanggal_po }}</td>
+                    <td>{{ c.total }}</td>
+                    <td>
+                        <fieldset class="fieldset">
+                            <form method="post">
+                                {% csrf_token %}
+                                <select  class="select" id="status" name="status" required>
+                                    <option disabled selected value="">Status</option>
+                                    <option value="menunggu persetujuan">Menunggu Persetujuan</option>
+                                    <option value="disetujui">Disetujui</option>
+                                    <option value="telah dikirim">Telah Dikirim</option>
+                                    <option value="barang sampai">Barang Sampai</option>
+                                </select>
+                            </form>
+                        </fieldset>
+                    </td>
+                </tr>   
+            {% endfor %}      
+            </tbody>
+        </table>
+    </div>
+    {% endif %} 
 {% endblock %}

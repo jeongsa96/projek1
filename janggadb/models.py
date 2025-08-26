@@ -43,6 +43,11 @@ class PO(models.Model):
         ('telah dikirim', 'Telah Dikirim'),
         ('barang sampai', 'Barang Sampai'),
     ]
+    tipe_po = [
+        ('struktur', 'Struktur'),
+        ('arsitektur', 'Arsitektur'),
+        ('MEP', 'MEP'),
+    ]
 
     vendor = models.CharField(max_length=50)
     nomor_po = models.CharField(max_length=50)
@@ -51,5 +56,6 @@ class PO(models.Model):
     kuantitas = models.IntegerField(null=False)
     harga_satuan = models.IntegerField(null=False)
     total = models.IntegerField(null=False)
-    status = models.CharField(choices=status_po, default='Belum Disetujui', null=True)
+    status = models.CharField(choices=status_po, default='Menunggu Persetujuan', null=True)
+    tipe = models.CharField(choices=tipe_po, null=True)
     client_id = models.ForeignKey(Project, null=False, on_delete=models.CASCADE)

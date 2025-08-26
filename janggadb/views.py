@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, reverse
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from .forms import LoginForm, RegisterForm, ProjekForm, InvoiceForm, POform
@@ -7,78 +7,54 @@ from django.contrib import messages
 
 
 def register(request):
-    msg = None
     if request.method == 'POST':
         form = RegisterForm(request.POST)
         if form.is_valid():
             user = form.save()
             user.is_active = False
             user.save()
-            msg = 'user created'
+            messages.success(request, 'akun telah dibuat, tunggu konfirmasi admin!')
             return redirect('index')
         else:
             msg = 'form is not valid'
     else:
         form = RegisterForm()
-    return render(request,'register.html', {'form': form, 'msg': msg})
+    return render(request,'register.html', {'form': form})
 
 def index(request):
     form = LoginForm(request.POST or None)
     msg = None
     if request.method == 'POST':
+        form = LoginForm(request.POST)
         if form.is_valid():
             username = form.cleaned_data.get('username')
             password = form.cleaned_data.get('password')
             user = authenticate(username=username, password=password)
-            if user is not None and user.is_admin:
-                login(request, user)
-                return redirect('admin-jangga')
-            elif user is not None and user.is_projectManager:
-                login(request, user)
-                return redirect('project-manager')
-            elif user is not None and user.is_finance:
+
+            if user is not None:
                 login(request, user)
                 request.session['username'] = user.username
-                return redirect('finance')
-            elif user is not None and user.is_logistik:            
-                login(request, user)
-                return redirect('logistik')
-            else: 
-                msg = 'username atau password anda salah'
+
+                role_map = {
+                    'is_admin': 'admin-jangga',
+                    'is_projectManager': 'project-manager',
+                    'is_finance': 'finance',
+                    'is_logistik': 'logistik',
+                }
+
+                for role, url in role_map.items():
+                    if getattr(user, role):
+                        return redirect(reverse(url))
+
+                messages.error(request, 'akses tidak valid')
+            else:
+                messages.error(request, 'username atau password salah')
         else:
-            msg = 'error'        
-    return render(request, 'login.html', {'form':form, 'msg':msg})
-    # if request.method == 'POST':
-    #         form = LoginForm(request.POST)
-    #         if form.is_valid():
-    #             username = form.cleaned_data.get('username')
-    #             password = form.cleaned_data.get('password')
-    #             user = authenticate(username=username, password=password)
+            messages.error(request, 'input anda salah')
+    else:
+        form = LoginForm()
 
-    #             if user is not None:
-    #                 login(request, user)
-    #                 request.session['username'] = user.username
-
-    #                 role_map = {
-    #                     'is_admin': 'admin-jangga',
-    #                     'is_projectManager': 'project-manager',
-    #                     'is_finance': 'finance',
-    #                     'is_logistik': 'logistik',
-    #                 }
-
-    #                 for role, url in role_map.items():
-    #                     if getattr(user, role):
-    #                         return redirect(reverse(url))
-
-    #                 messages.error(request, 'Invalid user role')
-    #             else:
-    #                 messages.error(request, 'Invalid username or password')
-    #         else:
-    #             messages.error(request, 'Form validation error')
-    #     else:
-    #         form = LoginForm()
-
-    # return render(request, 'login.html', {'form': form})
+    return render(request, 'login.html', {'form': form})
 
 @login_required
 def Admin(request):
@@ -192,6 +168,9 @@ def Finance_DI(request):
         return render(request,'finance/data-invoice.html',context)
 
     return render(request,'finance/data-invoice.html',{'projek':projek})
+
+def Finance_updateStatus(request, id=id):
+    pass
 
 @login_required        
 def Logout(request):

@@ -12,12 +12,17 @@
         <h2 class="text-2xl font-bold text-gray-800 mb-4">Purchase Order</h2>
         <form class="flex flex-col" method="post" enctype="multipart/form-data">
             {% csrf_token %}
-            <label for="id_client_id">Client</label>
+            <label for="id_client_id" class="font-bold text-sm">Client</label>
             {% render_field form.client_id class="select validator p-2 mb-4 w-auto" %}
             {{ form.vendor }}
             {{ form.nomor_po }}
-            {{ form.tanggal_po }}
+            <label class="input validator p-2 mb-4 w-auto">
+                <span class="label">Tanggal PO</span>
+                {{ form.tanggal_po }}
+            </label>
             {{ form.deskripsi_barang }}
+            <label for="tipe" class="font-bold text-sm">Tipe</label>
+            {% render_field form.tipe class="select validator p-2 mb-4 w-auto" %}
             {{ form.kuantitas }}
             {{ form.harga_satuan }}
             {{ form.total }}

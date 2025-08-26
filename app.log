@@ -873,3 +873,105 @@ WARNING 2025-08-24 18:45:56,002 log Not Found: /.well-known/appspecific/com.chro
 WARNING 2025-08-24 18:46:00,505 log Not Found: /.well-known/appspecific/com.chrome.devtools.json
 INFO 2025-08-24 18:47:37,242 autoreload G:\Kerja\projek1\janggadb\admin.py changed, reloading.
 INFO 2025-08-24 18:47:42,327 autoreload Watching for file changes with StatReloader
+INFO 2025-08-25 12:05:13,175 autoreload Watching for file changes with StatReloader
+INFO 2025-08-25 12:05:49,525 autoreload D:\Kerja\projek1\janggadb\views.py changed, reloading.
+INFO 2025-08-25 12:05:56,615 autoreload Watching for file changes with StatReloader
+INFO 2025-08-25 12:52:36,859 autoreload D:\Kerja\projek1\janggadb\views.py changed, reloading.
+INFO 2025-08-25 12:52:47,443 autoreload Watching for file changes with StatReloader
+INFO 2025-08-25 12:55:02,111 autoreload D:\Kerja\projek1\janggadb\views.py changed, reloading.
+INFO 2025-08-25 12:55:07,092 autoreload Watching for file changes with StatReloader
+ERROR 2025-08-25 12:55:40,767 log Internal Server Error: /register/
+Traceback (most recent call last):
+  File "D:\Kerja\projek1\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Kerja\projek1\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Kerja\projek1\janggadb\views.py", line 22, in register
+    return render(request,'register.html', {'form': form, 'msg': msg})
+                                                                 ^^^
+UnboundLocalError: cannot access local variable 'msg' where it is not associated with a value
+INFO 2025-08-25 12:55:55,222 autoreload D:\Kerja\projek1\janggadb\views.py changed, reloading.
+INFO 2025-08-25 12:55:59,033 autoreload Watching for file changes with StatReloader
+INFO 2025-08-25 12:56:56,022 autoreload D:\Kerja\projek1\janggadb\views.py changed, reloading.
+INFO 2025-08-25 12:57:00,529 autoreload Watching for file changes with StatReloader
+INFO 2025-08-25 13:00:56,759 autoreload D:\Kerja\projek1\janggadb\views.py changed, reloading.
+INFO 2025-08-25 13:01:00,450 autoreload Watching for file changes with StatReloader
+INFO 2025-08-25 16:34:32,537 autoreload D:\Kerja\projek1\janggadb\views.py changed, reloading.
+INFO 2025-08-25 16:34:37,810 autoreload Watching for file changes with StatReloader
+INFO 2025-08-25 16:34:44,196 autoreload D:\Kerja\projek1\janggadb\views.py changed, reloading.
+INFO 2025-08-25 16:34:48,009 autoreload Watching for file changes with StatReloader
+INFO 2025-08-25 16:35:20,145 autoreload D:\Kerja\projek1\janggadb\views.py changed, reloading.
+INFO 2025-08-25 16:35:24,104 autoreload Watching for file changes with StatReloader
+INFO 2025-08-25 16:37:48,657 autoreload D:\Kerja\projek1\janggadb\views.py changed, reloading.
+INFO 2025-08-25 16:37:52,602 autoreload Watching for file changes with StatReloader
+INFO 2025-08-25 16:39:23,732 autoreload D:\Kerja\projek1\janggadb\views.py changed, reloading.
+INFO 2025-08-25 16:39:28,094 autoreload Watching for file changes with StatReloader
+INFO 2025-08-25 16:56:56,179 autoreload D:\Kerja\projek1\janggadb\views.py changed, reloading.
+INFO 2025-08-25 16:57:00,518 autoreload Watching for file changes with StatReloader
+ERROR 2025-08-25 16:57:02,400 log Internal Server Error: /
+Traceback (most recent call last):
+  File "D:\Kerja\projek1\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Kerja\projek1\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Kerja\projek1\janggadb\views.py", line 31, in index
+    request.session['username'] = user.username
+                                  ^^^^
+UnboundLocalError: cannot access local variable 'user' where it is not associated with a value
+INFO 2025-08-25 16:57:37,111 autoreload D:\Kerja\projek1\janggadb\views.py changed, reloading.
+INFO 2025-08-25 16:57:40,696 autoreload Watching for file changes with StatReloader
+ERROR 2025-08-25 16:57:46,966 log Internal Server Error: /
+Traceback (most recent call last):
+  File "D:\Kerja\projek1\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Kerja\projek1\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Kerja\projek1\janggadb\views.py", line 32, in index
+    request.session['username'] = user.username
+                                  ^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'username'
+INFO 2025-08-25 16:58:01,929 autoreload D:\Kerja\projek1\janggadb\views.py changed, reloading.
+INFO 2025-08-25 16:58:06,261 autoreload Watching for file changes with StatReloader
+INFO 2025-08-25 16:59:56,981 autoreload D:\Kerja\projek1\janggadb\views.py changed, reloading.
+INFO 2025-08-25 17:00:01,699 autoreload Watching for file changes with StatReloader
+INFO 2025-08-25 18:28:42,411 autoreload D:\Kerja\projek1\janggadb\forms.py changed, reloading.
+INFO 2025-08-25 18:28:47,219 autoreload Watching for file changes with StatReloader
+INFO 2025-08-25 18:29:43,896 autoreload D:\Kerja\projek1\janggadb\views.py changed, reloading.
+INFO 2025-08-25 18:29:51,451 autoreload Watching for file changes with StatReloader
+INFO 2025-08-25 18:39:17,001 autoreload D:\Kerja\projek1\janggadb\forms.py changed, reloading.
+INFO 2025-08-25 18:39:22,313 autoreload Watching for file changes with StatReloader
+INFO 2025-08-25 18:39:37,447 autoreload D:\Kerja\projek1\janggadb\forms.py changed, reloading.
+INFO 2025-08-25 18:39:43,090 autoreload Watching for file changes with StatReloader
+INFO 2025-08-25 18:39:56,858 autoreload D:\Kerja\projek1\janggadb\forms.py changed, reloading.
+INFO 2025-08-25 18:40:03,901 autoreload Watching for file changes with StatReloader
+WARNING 2025-08-25 18:40:41,731 log Not Found: /.well-known/appspecific/com.chrome.devtools.json
+INFO 2025-08-25 18:42:01,924 autoreload D:\Kerja\projek1\janggadb\forms.py changed, reloading.
+INFO 2025-08-25 18:42:08,742 autoreload Watching for file changes with StatReloader
+WARNING 2025-08-25 18:42:12,037 log Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-25 18:43:52,712 log Not Found: /.well-known/appspecific/com.chrome.devtools.json
+INFO 2025-08-25 18:44:05,370 autoreload D:\Kerja\projek1\janggadb\forms.py changed, reloading.
+INFO 2025-08-25 18:44:10,812 autoreload Watching for file changes with StatReloader
+WARNING 2025-08-25 18:44:12,996 log Not Found: /.well-known/appspecific/com.chrome.devtools.json
+INFO 2025-08-25 18:44:24,412 autoreload D:\Kerja\projek1\janggadb\forms.py changed, reloading.
+INFO 2025-08-25 18:44:30,940 autoreload Watching for file changes with StatReloader
+WARNING 2025-08-25 18:44:33,910 log Not Found: /.well-known/appspecific/com.chrome.devtools.json
+INFO 2025-08-25 18:44:46,312 autoreload D:\Kerja\projek1\janggadb\forms.py changed, reloading.
+INFO 2025-08-25 18:44:52,895 autoreload Watching for file changes with StatReloader
+WARNING 2025-08-25 18:44:54,841 log Not Found: /.well-known/appspecific/com.chrome.devtools.json
+INFO 2025-08-25 18:45:03,437 autoreload D:\Kerja\projek1\janggadb\forms.py changed, reloading.
+INFO 2025-08-25 18:45:13,613 autoreload Watching for file changes with StatReloader
+WARNING 2025-08-25 18:45:16,315 log Not Found: /.well-known/appspecific/com.chrome.devtools.json
+INFO 2025-08-25 18:45:28,409 autoreload D:\Kerja\projek1\janggadb\forms.py changed, reloading.
+INFO 2025-08-25 18:45:35,425 autoreload Watching for file changes with StatReloader
+WARNING 2025-08-25 18:45:38,907 log Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-25 20:40:03,843 log Forbidden (CSRF token missing.): /finance/anggaran
+INFO 2025-08-26 15:46:32,515 autoreload D:\Kerja\projek1\janggadb\models.py changed, reloading.
+INFO 2025-08-26 15:46:39,504 autoreload Watching for file changes with StatReloader
+INFO 2025-08-26 15:46:58,833 autoreload D:\Kerja\projek1\janggadb\models.py changed, reloading.
+INFO 2025-08-26 15:47:03,450 autoreload Watching for file changes with StatReloader
+INFO 2025-08-26 15:49:21,454 autoreload D:\Kerja\projek1\janggadb\forms.py changed, reloading.
+INFO 2025-08-26 15:49:29,149 autoreload Watching for file changes with StatReloader
+INFO 2025-08-26 16:05:57,925 autoreload D:\Kerja\projek1\janggadb\models.py changed, reloading.
+INFO 2025-08-26 16:06:11,621 autoreload Watching for file changes with StatReloader
+INFO 2025-08-26 16:19:54,884 autoreload D:\Kerja\projek1\janggadb\views.py changed, reloading.
+INFO 2025-08-26 16:20:01,957 autoreload Watching for file changes with StatReloader
