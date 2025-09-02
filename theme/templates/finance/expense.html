@@ -1,0 +1,53 @@
+{% extends "finance/layout.html" %}
+{% load static %}
+{% load humanize %}
+{% load widget_tweaks %}
+
+{% block content %}
+    <fieldset class="fieldset">
+        <form method="post">
+            {% csrf_token %}
+            <legend class="fieldset-legend">Client</legend>
+            {% if messages %}
+                {% for m in messages %}
+                <div role="alert" class="alert alert-success max-w-sm my-4">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 shrink-0 stroke-current" fill="none" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                    <span>{{ m }}</span>
+                </div>
+                {% endfor %}
+            {% endif %}
+            <select class="select validator" required name="pilihan" id="pilihan">
+                <option disabled selected value="">Pilih Client</option>
+                    {% for c in client %}
+                        <option value={{ c.id }}>{{ c.client }}</option>   
+                    {% endfor %}             
+            </select>
+            <p class="validator-hint">Required</p>
+            <button type="submit" class="btn btn-info" id="inputClient" name="inputClient">Submit</button>
+        </form>
+    </fieldset>
+    {% if data_anggaran %}
+    <div class="w-full max-w-md bg-white rounded-lg shadow-md p-6 mt-4">
+        {% if msg %}
+           <div class="text-shadow-gray-950 text-2xl"> {{ msg }} </div>
+        {% endif %}
+        <h2 class="text-2xl font-bold text-gray-800 mb-4">Expense</h2>
+        <form class="flex flex-col" method="post">
+            {% csrf_token %}
+            <label for="jenis_anggaran">Jenis Anggaran</label>
+            <select class="select validator p-2 mb-4 w-auto" required name="jenis_anggaran" id="jenis_anggaran">
+                <option disabled selected value="">Pilih Anggaran</option>
+                    {% for a in data_anggaran %}
+                        <option value={{ a.jenis_anggaran.id }}>{{ a.jenis_anggaran }}</option>   
+                    {% endfor %}             
+            </select>
+            <input type="date" class="input validator p-2 mb-4 w-auto" id="tanggal" name="tanggal" onfocus="(this.type='date')" onblur="(this.type='text')" placeholder="Tanggal">
+            <input type="number" class="input validator p-2 mb-4 w-auto" id="total" name="total" placeholder="Total Expense">
+            <input type="hidden" id="client_id" name="client_id" value="{{ data }}">
+            <button type="submit" class="bg-gradient-to-r from-indigo-500 to-blue-500 text-white font-bold py-2 px-4 rounded-md mt-4 hover:bg-indigo-600 hover:to-blue-600 transition ease-in-out duration-150" id="updateAnggaran" name="updateAnggaran">Submit</button>
+        </form>
+    </div>
+    {% endif %}
+{% endblock %}

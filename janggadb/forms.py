@@ -1,7 +1,7 @@
 from django import forms
 from django.forms.widgets import Textarea
 from django.contrib.auth.forms import UserCreationForm
-from .models import User, Project, Invoice, PO
+from .models import User, Project, Invoice, PO, Anggaran, data_Expense
 
 class LoginForm(forms.Form):
     username = forms.CharField(
@@ -255,3 +255,31 @@ class POform(forms.ModelForm):
         model = PO
         fields = ['vendor','nomor_po','tanggal_po','deskripsi_barang','tipe','kuantitas','harga_satuan','total','client_id']
         
+class AnggaranForm(forms.ModelForm):   
+    deskripsi = forms.CharField(
+        widget = forms.TextInput(
+            attrs = {
+                'class':'input validator p-2 mb-4 w-auto',
+                'id':'deskripsi',
+                'name':'deskripsi',
+                'type':'text',
+                'placeholder':'Deskripsi Anggaran',
+            }
+        )
+    )        
+    total_anggaran = forms.IntegerField(
+        widget = forms.NumberInput(
+            attrs = {
+                'class':'input validator p-2 mb-4 w-auto',
+                'id':'total-anggaran',
+                'name':'total-anggaran',
+                'type':'number',
+                'placeholder':'Jumlah Anggaran',
+            }
+        )
+    )        
+
+    class Meta:
+        model = Anggaran
+        fields = ['jenis_anggaran','deskripsi','total_anggaran','client_id']
+

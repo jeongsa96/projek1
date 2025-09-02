@@ -1,0 +1,50 @@
+{% extends "finance/layout.html" %}
+{% load static %}
+{% load humanize %}
+{% load widget_tweaks %}
+
+{% block content %}
+    <fieldset class="fieldset">
+        <form method="post">
+            {% csrf_token %}
+            <legend class="fieldset-legend">Client</legend>
+            {% if messages %}
+                {% for m in messages %}
+                <div role="alert" class="alert alert-success max-w-sm my-4">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 shrink-0 stroke-current" fill="none" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                    <span>{{ m }}</span>
+                </div>
+                {% endfor %}
+            {% endif %}
+            <select class="select validator" required name="client" id="client">
+                <option disabled selected value="">Pilih Client</option>
+                    {% for c in client %}
+                        <option value={{ c.id }}>{{ c.client }}</option>   
+                    {% endfor %}             
+            </select>
+            <p class="validator-hint">Required</p>
+            <legend class="fieldset-legend">Anggaran</legend>
+            <select class="select validator" required name="jenis" id="jenis">
+                <option disabled selected value="">Pilih Anggaran</option>
+                    {% for a in anggaran %}
+                        <option value={{ a.id }}>{{ a.jenis_anggaran }}</option>   
+                    {% endfor %}             
+            </select>
+            <p class="validator-hint">Required</p>
+            <button type="submit" class="btn btn-info">Submit</button>
+        </form>
+    </fieldset>
+    {% if data_anggaran %}
+    <div class="w-full max-w-md bg-white rounded-lg shadow-md p-6 mt-4">
+        {% if msg %}
+           <div class="text-shadow-gray-950 text-2xl"> {{ msg }} </div>
+        {% endif %}
+        {% for d in data_anggaran %}
+            <h2 class="text-2xl font-bold text-gray-800 mb-4">{{ d.jenis_anggaran }}</h2>
+            <h2 class="text-2xl font-bold text-gray-800 mb-4">Rp. &nbsp;&nbsp;{{ d.total_anggaran }}</h2>
+        {% endfor %}
+    </div>
+    {% endif %}
+{% endblock %}

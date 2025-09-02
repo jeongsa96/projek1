@@ -1,8 +1,8 @@
 from django.shortcuts import render, redirect, reverse
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
-from .forms import LoginForm, RegisterForm, ProjekForm, InvoiceForm, POform
-from .models import Project, Invoice, PO
+from .forms import LoginForm, RegisterForm, ProjekForm, InvoiceForm, POform, AnggaranForm
+from .models import Project, Invoice, PO, Anggaran, data_Expense, Jenis_Anggaran
 from django.contrib import messages
 
 
@@ -108,6 +108,12 @@ def Admin_PR(request):
         return render(request, 'admin/po-request.html', context)
 
     return render(request, 'admin/po-request.html',{'projek':projek})
+
+def Admin_updateStatus(request, id=id):
+    status = request.POST['status']
+    PO.objects.filter(nomor_po=id).update(status=status)
+    messages.success(request, 'status telah diupdate')
+    return redirect('admin-po-request')
         
 @login_required
 def Project_Manager(request):
@@ -156,11 +162,71 @@ def Finance(request):
 
 @login_required        
 def Finance_A(request):
-    return render(request,'finance/anggaran.html')
+    msg = None
+    if request.method == 'POST':
+        anggaran = AnggaranForm(request.POST)
+        if anggaran.is_valid():
+            form = anggaran.save()
+            return redirect('finance-anggaran')
+        else:
+            msg = 'data anggaran salah'
+    else:
+        form = AnggaranForm
+
+    context = {'form':form}
+    return render(request,'finance/anggaran.html', context)
+
+@login_required
+def Finance_AC(request):
+    client = Project.objects.only("client")
+    anggaran = Jenis_Anggaran.objects.all()
+    if request.method == 'POST':
+        client_input = request.POST['client']
+        anggaran_input = request.POST['jenis']
+        data_anggaran = Anggaran.objects.filter(client_id=client_input, jenis_anggaran=anggaran_input)
+        
+        context = {'client':client,'anggaran':anggaran,'data_anggaran':data_anggaran}
+        return render(request, 'finance/cek-anggaran.html', context)
+
+
+    context = {'client':client,'anggaran':anggaran}
+    return render(request,'finance/cek-anggaran.html',context)
+
+
+@login_required
+def Finance_E(request):
+    client = Project.objects.only("client")
+    if request.method == 'POST':
+        if 'inputClient' in request.POST:
+            data = request.POST['pilihan']
+            data_anggaran = Anggaran.objects.filter(client_id=data).select_related('jenis_anggaran')
+            context = {'client':client,'data_anggaran':data_anggaran,'data':data}
+            return render(request,'finance/expense.html', context)
+        
+        if 'updateAnggaran' in request.POST:
+            jenis_anggaran = request.POST['jenis_anggaran']
+            tanggal = request.POST['tanggal']
+            total = request.POST['total']
+            client_id = request.POST['client_id']
+            anggaran_id = Anggaran.objects.filter(jenis_anggaran=jenis_anggaran,client_id=client_id).values_list('id')
+            anggaran_total = Anggaran.objects.filter(jenis_anggaran=jenis_anggaran,client_id=client_id).values_list('total_anggaran', flat=True)
+            anggaran_int = anggaran_total[0]
+            total_int = int(total)
+
+            expense = data_Expense(jenis_anggaran_id=jenis_anggaran,tanggal=tanggal,total=total,client_id_id=client_id,anggaran_id_id=anggaran_id)
+            expense.save()
+
+            sisa_anggaran = anggaran_int - total_int
+
+            Anggaran.objects.filter(id=anggaran_id[0][0]).update(total_anggaran=sisa_anggaran)
+            return redirect('finance-expense')
+        
+    context = {'client':client}
+    return render(request,'finance/expense.html', context)
 
 @login_required        
 def Finance_DI(request):
-    projek = Project.objects.only("client")
+    projek = Project.objects.only('client')
     if request.method == 'POST':
         client = request.POST['pilihan']
         cdb = Invoice.objects.raw("SELECT * FROM janggadb_invoice WHERE client_id_id = %s", [client])
@@ -170,7 +236,10 @@ def Finance_DI(request):
     return render(request,'finance/data-invoice.html',{'projek':projek})
 
 def Finance_updateStatus(request, id=id):
-    pass
+    status = request.POST['status']
+    Invoice.objects.filter(nomor_invoice=id).update(status=status)
+    messages.success(request, 'status telah diupdate')
+    return redirect('finance-invoice')
 
 @login_required        
 def Logout(request):

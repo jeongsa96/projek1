@@ -59,3 +59,27 @@ class PO(models.Model):
     status = models.CharField(choices=status_po, default='Menunggu Persetujuan', null=True)
     tipe = models.CharField(choices=tipe_po, null=True)
     client_id = models.ForeignKey(Project, null=False, on_delete=models.CASCADE)
+
+class Jenis_Anggaran(models.Model):
+    jenis_anggaran= models.CharField(max_length=100, null = False)
+
+    def __str__(self):
+        return self.jenis_anggaran 
+
+class Anggaran(models.Model):
+    jenis_anggaran = models.ForeignKey(Jenis_Anggaran, on_delete=models.CASCADE , null = True)
+    deskripsi = models.TextField(null = True)
+    total_anggaran = models.BigIntegerField(null = False)
+    client_id = models.ForeignKey(Project, null=False, on_delete=models.CASCADE, default=0)
+
+class data_Expense(models.Model):
+    jenis_anggaran = models.ForeignKey(Jenis_Anggaran, on_delete=models.CASCADE , null = True)
+    tanggal = models.DateField(null = False)
+    total = models.BigIntegerField(null = False)
+    client_id = models.ForeignKey(Project, null=False, on_delete=models.CASCADE, default=0)
+    anggaran_id = models.ForeignKey(Anggaran, null=False, on_delete=models.CASCADE, default=0)
+
+
+        
+
+
