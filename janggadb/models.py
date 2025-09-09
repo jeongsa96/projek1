@@ -26,9 +26,10 @@ class Invoice(models.Model):
     ]
 
     nomor_invoice = models.CharField(max_length=50)
+    nomor_po = models.CharField(max_length=50, null=False)
     tanggal_invoice = models.DateField(null=False)
     tanggal_jatuh_tempo = models.DateField(null=False)
-    jumlah_tagihan = models.IntegerField(null=True)
+    jumlah_tagihan = models.BigIntegerField(null=True)
     status = models.CharField(choices=status_invoice, default='Belum Lunas', null=True)
     lampiran = models.FileField(upload_to='invoice/', blank=True)
     client_id = models.ForeignKey(Project, null=False, on_delete=models.CASCADE)
@@ -49,16 +50,19 @@ class PO(models.Model):
         ('MEP', 'MEP'),
     ]
 
-    vendor = models.CharField(max_length=50)
-    nomor_po = models.CharField(max_length=50)
+    vendor = models.CharField(max_length=100)
+    nomor_po = models.CharField(max_length=100)
     tanggal_po = models.DateField(null=False)
     deskripsi_barang = models.TextField(max_length=100)
-    kuantitas = models.IntegerField(null=False)
-    harga_satuan = models.IntegerField(null=False)
-    total = models.IntegerField(null=False)
+    kuantitas = models.BigIntegerField(null=False)
+    harga_satuan = models.BigIntegerField(null=False)
+    total = models.BigIntegerField(null=False)
     status = models.CharField(choices=status_po, default='Menunggu Persetujuan', null=True)
     tipe = models.CharField(choices=tipe_po, null=True)
     client_id = models.ForeignKey(Project, null=False, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.nomor_po 
 
 class Jenis_Anggaran(models.Model):
     jenis_anggaran= models.CharField(max_length=100, null = False)
@@ -67,19 +71,35 @@ class Jenis_Anggaran(models.Model):
         return self.jenis_anggaran 
 
 class Anggaran(models.Model):
-    jenis_anggaran = models.ForeignKey(Jenis_Anggaran, on_delete=models.CASCADE , null = True)
+    jenis_anggaran = models.ForeignKey(Jenis_Anggaran, on_delete=models.CASCADE, null = True)
     deskripsi = models.TextField(null = True)
     total_anggaran = models.BigIntegerField(null = False)
-    client_id = models.ForeignKey(Project, null=False, on_delete=models.CASCADE, default=0)
+    client_id = models.ForeignKey(Project, null=False, on_delete=models.CASCADE)
 
 class data_Expense(models.Model):
-    jenis_anggaran = models.ForeignKey(Jenis_Anggaran, on_delete=models.CASCADE , null = True)
+    jenis_anggaran = models.ForeignKey(Jenis_Anggaran, on_delete=models.CASCADE, null = True)
     tanggal = models.DateField(null = False)
     total = models.BigIntegerField(null = False)
-    client_id = models.ForeignKey(Project, null=False, on_delete=models.CASCADE, default=0)
-    anggaran_id = models.ForeignKey(Anggaran, null=False, on_delete=models.CASCADE, default=0)
+    client_id = models.ForeignKey(Project, null=False, on_delete=models.CASCADE)
+    anggaran_id = models.ForeignKey(Anggaran, null=False, on_delete=models.CASCADE)
 
+class monitoring_PO(models.Model):
+    client_id = models.ForeignKey(Project, null=False, on_delete=models.CASCADE)
+    nomor_po = models.ForeignKey(PO, null=False, on_delete=models.CASCADE)
+    tanggal = models.DateField(null=False)
+    lampiran_sj = models.FileField(upload_to='monitoring/', blank=True)
+    lampiran_foto = models.FileField(upload_to='monitoring/', blank=True)
 
-        
+class Pekerjaan_mapping(models.Model):
+    jenis_pekerjaan = models.CharField(max_length=100) 
 
+    def __str__(self):
+        return self.jenis_pekerjaan       
 
+class Mapping_Report(models.Model):
+    client_id = models.ForeignKey(Project, null=False, on_delete=models.CASCADE)
+    segmen = models.CharField(max_length=50)
+    jenis_pekerjaan = models.ForeignKey(Pekerjaan_mapping, null=False ,on_delete=models.CASCADE)
+    total_mapping = models.IntegerField(null=False)
+    aktual_mapping = models.IntegerField(null=False)
+    tanggal = models.DateField(null=False)

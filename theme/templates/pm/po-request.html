@@ -1,4 +1,4 @@
-{% extends "admin/layout.html" %}
+{% extends "pm/layout.html" %}
 {% load static %}
 
 {% block content %}
@@ -53,7 +53,7 @@
                     <td>{{ c.total }}</td>
                     <td>
                         <fieldset class="fieldset">
-                        <form method="post" action="{% url 'admin-update' c.nomor_po %}">
+                        <form method="post" action="{% url 'pm-update' c.nomor_po %}">
                             {% csrf_token %}
                             <div class="join">
                                 <div>

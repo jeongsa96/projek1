@@ -1,0 +1,53 @@
+{% extends "logistik/layout.html" %}
+{% load static %}
+{% block content %}
+    <fieldset class="fieldset">
+        <form method="post">
+            {% csrf_token %}
+            <legend class="fieldset-legend">Projek</legend>
+            {% if messages %}
+                {% for m in messages %}
+                <div role="alert" class="alert alert-success max-w-sm my-4">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 shrink-0 stroke-current" fill="none" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                    <span>{{ m }}</span>
+                </div>
+                {% endfor %}
+            {% endif %}
+            <select  class="select validator" id="pilihan" name="pilihan" required>
+                <option disabled selected value="">Pilih Projek</option>
+                {% for p in projek %}
+                    <option value="{{ p.id }}">{{ p.client}}</option>
+                {% endfor %}
+            </select>
+            <p class="validator-hint">Required</p>
+            <button class="btn btn-info" type="submit">Submit</button>
+        </form>
+    </fieldset>
+    {% if status %}
+        <table class="table table-sm mt-4">
+            <thead>
+            <tr>
+                <th></th>
+                <th>No. PO</th>
+                <th>Client</th>
+                <th>Tanggal</th>
+                <th>Deskripsi Barang</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for s in status %}
+                <tr>
+                    <th>{{ forloop.counter }}</th>
+                    <td>{{ s.nomor_po}}</td>
+                    <td>{{ s.client_id}}</td>
+                    <td>{{ s.tanggal_po}}</td>
+                    <td>{{ s.deskripsi_barang}}</td>
+                </tr>   
+            {% endfor %}      
+            </tbody>
+        </table>
+    </div>
+    {% endif %}   
+{% endblock %}

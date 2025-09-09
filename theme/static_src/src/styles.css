@@ -44,3 +44,42 @@
   background-color: rgb(77, 77, 77);
   transition-duration: .2s;
 }
+
+/* From Uiverse.io by SteveBloX */ 
+.chart {
+  --bg: #f1f1f1;
+  --contrast: #f9f9f9;
+  --grey: #d9d9d9;
+  position: relative;
+  width: fit-content;
+  height: auto;
+  padding: 12px;
+  background-color: var(--bg);
+  border-radius: 20px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 20px -10px;
+}
+
+.chart-overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;  
+  background: repeating-linear-gradient(45deg, var(--bg), var(--grey) 20px);
+  filter: opacity(15%);
+}
+
+.chart-inner {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  overflow: hidden;
+  width: auto;
+  height: auto;
+  background-color: var(--contrast);
+  border-radius: 25px;
+  /* Content style */
+  font-size: 26px;
+  font-weight: 700;
+  color: #555;
+  text-align: center;
+  font-family: Arial, sans-serif;
+}

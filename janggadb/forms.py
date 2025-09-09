@@ -1,12 +1,12 @@
 from django import forms
 from django.forms.widgets import Textarea
 from django.contrib.auth.forms import UserCreationForm
-from .models import User, Project, Invoice, PO, Anggaran, data_Expense
-
+from .models import User, Project, Invoice, PO, Anggaran, data_Expense, monitoring_PO, Mapping_Report
+    
 class LoginForm(forms.Form):
     username = forms.CharField(
         widget = forms.TextInput(
-            attrs={
+            attrs = {
                 "name": "username", 
                 "id": "username", 
                 "class": "bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500",                
@@ -17,7 +17,7 @@ class LoginForm(forms.Form):
     )
     password = forms.CharField(
         widget = forms.PasswordInput(
-            attrs={
+            attrs = {
                "id": "password", 
                "name": "password", 
                 "class": "bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500",                
@@ -30,28 +30,28 @@ class LoginForm(forms.Form):
 class RegisterForm(UserCreationForm):
     username = forms.CharField(
         widget = forms.TextInput(
-            attrs={
+            attrs = {
                 "class": "bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             }
         )
     )
     password1 = forms.CharField(
         widget = forms.PasswordInput(
-            attrs={
+            attrs = {
                 "class": "bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             }
         )
     )
     password2 = forms.CharField(
         widget = forms.PasswordInput(
-            attrs={
+            attrs = {
                 "class": "bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             }
         )
     )
     email = forms.EmailField(
-        widget=forms.EmailInput(
-            attrs={
+        widget = forms.EmailInput(
+            attrs = {
                 "class": "bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             }
         )
@@ -64,7 +64,7 @@ class RegisterForm(UserCreationForm):
 class ProjekForm(forms.ModelForm):
     client = forms.CharField(
         widget = forms.TextInput(
-            attrs={
+            attrs ={
                 'class':'input validator p-2 mb-4 w-auto',
                 'placeholder':'Client',
                 'id':'client',
@@ -74,7 +74,7 @@ class ProjekForm(forms.ModelForm):
     )
     lokasi = forms.CharField(
         widget = forms.TextInput(
-            attrs={
+            attrs ={
                 'class':'input validator p-2 mb-4 w-auto',
                 'placeholder':'Lokasi',
                 'id':'lokasi',
@@ -84,7 +84,7 @@ class ProjekForm(forms.ModelForm):
     )
     jenis_projek = forms.CharField(
         widget = forms.TextInput(
-            attrs={
+            attrs ={
                 'class':'input validator p-2 mb-4 w-auto',
                 'placeholder':'Jenis Pekerjaan',
                 'id':'jenis_projek',
@@ -118,9 +118,19 @@ class InvoiceForm(forms.ModelForm):
             }
         )
     )
+    nomor_po = forms.CharField(
+        widget = forms.TextInput(
+            attrs = {
+                'class':'input validator p-2 mb-4 w-auto',
+                'placeholder':'No. PO',
+                'id':'no-po',
+                'name':'no-po',
+            }
+        )
+    )
     tanggal_invoice = forms.DateField(
-        widget= forms.DateInput(
-            attrs= {
+        widget = forms.DateInput(
+            attrs = {
                 'class':'input validator p-2 mb-4 w-auto',
                 'id':'tgl-invoice',
                 'name':'tgl-invoice',
@@ -132,8 +142,8 @@ class InvoiceForm(forms.ModelForm):
         )
     )
     tanggal_jatuh_tempo = forms.DateField(
-        widget= forms.DateInput(
-            attrs= {
+        widget = forms.DateInput(
+            attrs = {
                 'class':'input validator p-2 mb-4 w-auto',
                 'id':'tgl',
                 'name':'tgl',
@@ -145,8 +155,8 @@ class InvoiceForm(forms.ModelForm):
         )
     )
     jumlah_tagihan = forms.IntegerField(
-        widget= forms.NumberInput(
-            attrs= {
+        widget = forms.NumberInput(
+            attrs = {
                 'class':'input validator p-2 mb-4 w-auto',
                 'id':'jumlah-tagihan',
                 'name':'jumlah-tagihan',
@@ -168,7 +178,7 @@ class InvoiceForm(forms.ModelForm):
 
     class Meta:
         model = Invoice
-        fields = ['nomor_invoice','tanggal_invoice','tanggal_jatuh_tempo','jumlah_tagihan','lampiran','status','client_id']
+        fields = ['nomor_invoice','nomor_po','tanggal_invoice','tanggal_jatuh_tempo','jumlah_tagihan','lampiran','status','client_id']
 
 class POform(forms.ModelForm):
     vendor = forms.CharField(
@@ -216,8 +226,8 @@ class POform(forms.ModelForm):
         )
     )
     kuantitas = forms.IntegerField(
-        widget= forms.NumberInput(
-            attrs= {
+        widget = forms.NumberInput(
+            attrs = {
                 'class':'input validator p-2 mb-4 w-auto',
                 'id':'kuantitas',
                 'name':'kuantitas',
@@ -228,8 +238,8 @@ class POform(forms.ModelForm):
         )
     )
     harga_satuan = forms.IntegerField(
-        widget= forms.NumberInput(
-            attrs= {
+        widget = forms.NumberInput(
+            attrs = {
                 'class':'input validator p-2 mb-4 w-auto',
                 'id':'harga-satuan',
                 'name':'harga-satuan',
@@ -240,8 +250,8 @@ class POform(forms.ModelForm):
         )
     )
     total = forms.IntegerField(
-        widget= forms.NumberInput(
-            attrs= {
+        widget = forms.NumberInput(
+            attrs = {
                 'class':'input validator p-2 mb-4 w-auto',
                 'id':'total',
                 'name':'total',
@@ -283,3 +293,90 @@ class AnggaranForm(forms.ModelForm):
         model = Anggaran
         fields = ['jenis_anggaran','deskripsi','total_anggaran','client_id']
 
+class MonitoringForm(forms.ModelForm):
+    tanggal = forms.DateField(
+        widget = forms.DateInput(
+            attrs = {
+                'class':'input validator p-2 mb-4 w-auto',
+                'id':'tgl',
+                'name':'tgl',
+                'type':'text',
+                'onfocus':"(this.type='date')",
+                'onblur':"(this.type='text')",
+                'placeholder':'Tanggal',
+            }
+        )
+    )
+    lampiran_sj = forms.FileField(
+        widget = forms.FileInput(
+            attrs = {
+                'class':'file-input p-2 mb-4 w-auto',
+                'id':'lampiran-sj',
+                'name':'lampiran-sj',
+                'type':'file',
+            }
+        )
+    )
+    lampiran_foto = forms.FileField(
+        widget = forms.FileInput(
+            attrs= {
+                'class':'file-input p-2 mb-4 w-auto',
+                'id':'lampiran-foto',
+                'name':'lampiran-foto',
+                'type':'file',
+            }
+        )
+    )
+
+    class Meta:
+        model = monitoring_PO
+        fields = ['client_id','nomor_po','tanggal','lampiran_sj','lampiran_foto']
+
+class ReportForm(forms.ModelForm):
+    segmen = forms.CharField(
+        widget = forms.TextInput(
+            attrs = {
+                'class':'input validator p-2 mb-4 w-auto',
+                'id':'segmen',
+                'name':'segmen',
+                'type':'text',
+                'placeholder':'Segmen',
+            }
+        )
+    )        
+    total_mapping = forms.CharField(
+        widget = forms.TextInput(
+            attrs = {
+                'class':'input validator p-2 mb-4 w-auto',
+                'id':'total-mapping',
+                'name':'total-mapping',
+                'type':'text',
+                'placeholder':'Total Mapping',
+            }
+        )
+    )        
+    aktual_mapping = forms.CharField(
+        widget = forms.TextInput(
+            attrs = {
+                'class':'input validator p-2 mb-4 w-auto',
+                'id':'aktual-mapping',
+                'name':'aktual-mapping',
+                'type':'text',
+                'placeholder':'Aktual Mapping',
+            }
+        )
+    )        
+    tanggal = forms.DateField(
+        widget = forms.DateInput(
+            attrs = {
+                'class':'input validator p-2 mb-4 w-auto',
+                'id':'tgl',
+                'name':'tgl',
+                'type':'date',
+            }
+        )
+    )
+
+    class Meta:
+        model = Mapping_Report
+        fields = ['client_id','segmen','jenis_pekerjaan','total_mapping','aktual_mapping','tanggal']

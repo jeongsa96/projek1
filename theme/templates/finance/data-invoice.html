@@ -31,6 +31,7 @@
             <tr>
                 <th></th>
                 <th>No. Invoice</th>
+                <th>No. PO</th>
                 <th>Client</th>
                 <th>Jumlah Tagihan</th>
                 <th>Tanggal Terbit</th>
@@ -44,6 +45,7 @@
                 <tr>
                     <th>{{ forloop.counter }}</th>
                     <td>{{ i.nomor_invoice}}</td>
+                    <td>{{ i.nomor_po}}</td>
                     <td>{{ i.client_id}}</td>
                     <td>{{ i.jumlah_tagihan}}</td>
                     <td>{{ i.tanggal_invoice}}</td>
