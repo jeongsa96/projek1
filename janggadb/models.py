@@ -10,6 +10,13 @@ class User(AbstractUser):
     is_logistik = models.BooleanField('Is Logistik', default=False)
     is_finance = models.BooleanField('Is Finance', default=False)
 
+class Profile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    photo = models.ImageField(default='default.jpg', upload_to='photo_profile/')
+
+    def __str__(self):
+        return f'{self.user.username} Profile'
+
 class Project(models.Model):
     client = models.CharField(max_length=100)
     lokasi = models.CharField(max_length=100)
@@ -98,7 +105,7 @@ class Pekerjaan_mapping(models.Model):
 
 class Mapping_Report(models.Model):
     client_id = models.ForeignKey(Project, null=False, on_delete=models.CASCADE)
-    segmen = models.CharField(max_length=50)
+    tata_letak = models.CharField(max_length=50)
     jenis_pekerjaan = models.ForeignKey(Pekerjaan_mapping, null=False ,on_delete=models.CASCADE)
     total_mapping = models.IntegerField(null=False)
     aktual_mapping = models.IntegerField(null=False)

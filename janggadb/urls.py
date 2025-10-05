@@ -1,4 +1,4 @@
-from django.urls import path, include
+from django.urls import path
 from . import views
 
 urlpatterns = [
@@ -22,9 +22,10 @@ urlpatterns = [
     path('finance/cek-anggaran', views.Finance_AC, name="finance-cek-anggaran"),
     path('finance/expense', views.Finance_E, name="finance-expense"),
     path('admin-jangga/', views.Admin, name="admin-jangga"),
+    path('admin-jangga/edit-profil/<int:pk>', views.Admin_Profil, name="admin-profil"),
+    path('admin-jangga/change-pass/', views.Change_Password, name="change-password"),
     path('admin-jangga/projek-db', views.Admin_PD, name="admin-projekdb"),
     path('admin-jangga/projek-baru', views.Admin_PB, name="admin-projek-baru"),
     path('admin-jangga/daily-report', views.Admin_DR, name="admin-daily-report"),
-    path('search-pekerjaan/', views.Search_Pekerjaan, name='search-pekerjaan'),
     path('logout/', views.Logout, name="logout"),
 ]

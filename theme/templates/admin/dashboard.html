@@ -1,15 +1,21 @@
-{% extends "admin/layout.html" %}
-{% load static %}
-
+{% extends "admin/layout.html" %} {% load static %} 
+{% block title %}Admin - Dashboard{% endblock %}
 {% block content %}
 <div class="breadcrumbs text-lg font-bold mt-2">
   <ul>
     <li>
       <a>
-        <svg class="w-5 h-5 text-blue-700 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 21">
-          <path d="M16.975 11H10V4.025a1 1 0 0 0-1.066-.998 8.5 8.5 0 1 0 9.039 9.039.999.999 0 0 0-1-1.066h.002Z"/>
-          <path d="M12.5 0c-.157 0-.311.01-.565.027A1 1 0 0 0 11 1.02V10h8.975a1 1 0 0 0 1-.935c.013-.188.028-.374.028-.565A8.51 8.51 0 0 0 12.5 0Z"/>
-      </svg>
+        <svg
+          class="w-5 h-5 text-blue-700 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
+          aria-hidden="true"
+          xmlns="http://www.w3.org/2000/svg"
+          fill="currentColor"
+          viewBox="0 0 22 21">
+          <path
+            d="M16.975 11H10V4.025a1 1 0 0 0-1.066-.998 8.5 8.5 0 1 0 9.039 9.039.999.999 0 0 0-1-1.066h.002Z" />
+          <path
+            d="M12.5 0c-.157 0-.311.01-.565.027A1 1 0 0 0 11 1.02V10h8.975a1 1 0 0 0 1-.935c.013-.188.028-.374.028-.565A8.51 8.51 0 0 0 12.5 0Z" />
+        </svg>
         Dashboard
       </a>
     </li>
@@ -21,7 +27,7 @@
     <div class="card-body">
       <h2 class="card-title">Progress Rata-rata</h2>
       <div class="card-actions self-end text-right p-8">
-        <p class="text-4xl">{{ rata }} %</p>
+        <p class="text-4xl">{{ rata }}</p>
       </div>
     </div>
   </div>
@@ -46,22 +52,26 @@
 <div class="chart">
   <fieldset class="fieldset mb-2">
     <form method="post">
-        {% csrf_token %}
-        <div class="join">
-            <div>
-                <label class="select join-item">
-                    <select id="segmen" name="segmen" required>
-                        <option selected value="">Pilih Segmen</option>
-                        {% for ls in list_segmen %} 
-                        <option value="{{ ls.segmen }}">{{ ls.segmen }}</option>
-                        {% endfor %}                
-                    </select>
-                </label>
-            </div>
-            <button class="btn btn-success join-item" type="submit">
-                <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAbElEQVR4nO3UsQ2AMAwF0YMRWI1JGAQxFyvRmIaCgiYxJNj6J7lJ9aQkBhUoe2niA2oTwAQgI2ACll6AEdivs60F4KkZOG6IgcaAEkQRwByzpgB4rqDrI8z9De1vi6g0AUwAsgDMOXEBii86AcUnw48cScs3AAAAAElFTkSuQmCC" alt="enter-2">
-            </button>
+      {% csrf_token %}
+      <div class="join">
+        <div>
+          <select
+            class="select join-item"
+            id="tata-letak"
+            name="tata-letak"
+            required>
+            <option selected value="">Pilih Tata Letak</option>
+            {% for ls in list %}
+            <option value="{{ ls.tata_letak }}">{{ ls.tata_letak }}</option>
+            {% endfor %}
+          </select>
         </div>
+        <button class="btn btn-success join-item" type="submit">
+          <img
+            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAbElEQVR4nO3UsQ2AMAwF0YMRWI1JGAQxFyvRmIaCgiYxJNj6J7lJ9aQkBhUoe2niA2oTwAQgI2ACll6AEdivs60F4KkZOG6IgcaAEkQRwByzpgB4rqDrI8z9De1vi6g0AUwAsgDMOXEBii86AcUnw48cScs3AAAAAElFTkSuQmCC"
+            alt="enter-2" />
+        </button>
+      </div>
     </form>
   </fieldset>
   <div class="chart-overlay"></div>

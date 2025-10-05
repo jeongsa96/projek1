@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.humanize',
+    'django_bootstrap_icons',
     'debug_toolbar',
     'janggadb',
     'tailwind',
@@ -68,41 +69,6 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'jangga.urls'
-
-LOGGING = {
-       'version': 1,
-       'disable_existing_loggers': False,
-       'formatters': {
-           'verbose': {
-               'format': '{levelname} {asctime} {module} {message}',
-               'style': '{',
-           },
-           'simple': {
-               'format': '{levelname} {message}',
-               'style': '{',
-           },
-       },
-       'handlers': {
-           'console': {
-               'level': 'INFO',
-               'class': 'logging.StreamHandler',
-               'formatter': 'simple'
-           },
-           'file': {
-               'level': 'DEBUG',
-               'class': 'logging.FileHandler',
-               'filename': 'app.log',
-               'formatter': 'verbose'
-           },
-       },
-       'loggers': {
-           '': {
-               'handlers': ['console', 'file'],
-               'level': 'INFO',
-               'propagate': True,
-           },
-       },
-   }
 
 TEMPLATES = [
     {
@@ -159,7 +125,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/5.2/topics/i18n/
 
-LANGUAGE_CODE = 'id-ID'
+LANGUAGE_CODE = 'en-US'
 
 TIME_ZONE = 'UTC'
 
@@ -176,7 +142,7 @@ USE_THOUSAND_SEPARATOR = True
 STATIC_URL = 'static/'
 
 STATICFILES_DIRS = [
-    BASE_DIR / 'static'
+    BASE_DIR / 'static',
 ]
 
 STATIC_ROOT = BASE_DIR.parent / "local-cdn" / "static"

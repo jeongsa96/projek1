@@ -1,0 +1,62 @@
+{% extends "admin/layout.html" %} {% load static %} {% load widget_tweaks %} 
+{% block content %} {% load bootstrap_icons %}
+
+<!-- From Uiverse.io by themrsami -->
+<div class="hero bg-base-200 min-h-screen">
+  <div class="hero-content flex-col lg:flex-row-reverse">
+    <div class="card bg-base-100 image-full shadow-sm">
+      <figure>
+        <!-- To display image -->
+        <img class="max-w-24 max-h-24" id="myimage" src="{{user.profile.photo.url}}" />
+      </figure>
+    </div>
+    <div class="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
+      <div class="card-body">  
+      <h2 class="text-2xl font-bold text-gray-800 mb-4">Profil Saya</h2>
+        <form class="flex flex-col" method="post" enctype="multipart/form-data">
+          {% csrf_token %}
+          <div class="input max-w-sm mb-4">
+              <label class="label-text my-auto me-3 p-0" for="username">Username</label>
+              <input type="text" name="username" value="{{user.username}}" class="grow" id="username" disabled="" required="">
+              {{ user_form.username }}
+          </div>
+          <div class="input max-w-sm mb-4">
+              <label class="label-text my-auto me-3 p-0" for="email">Email</label>
+              {{ user_form.email }}
+          </div>
+          <div class="input max-w-sm mb-4">
+              <label class="label-text my-auto me-3 p-0" for="first-name">Nama Depan</label>
+              {{ user_form.first_name }}
+            </div>
+            <div class="input max-w-sm mb-4">
+              <label class="label-text my-auto me-3 p-0" for="last-name">Nama Belakang</label>
+              {{ user_form.last_name }}
+          </div>
+          <div class="input max-w-sm mb-4">
+              <!-- To upload new image -->
+              {{ photo_form.photo }}
+          </div>
+          <button
+          type="submit"
+          class="bg-gradient-to-r from-indigo-500 to-blue-500 text-white font-bold py-2 px-4 rounded-md mt-4 hover:bg-indigo-600 hover:to-blue-600 transition ease-in-out duration-150">
+          Simpan
+        </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="{% static "js/flyonui.js" %}"></script>
+<script>
+  var loadFile = function(event) {
+    var output = document.getElementById('myimage');
+    output.src = URL.createObjectURL(event.target.files[0]);
+    output.onload = function() {
+      URL.revokeObjectURL(output.src) // free memory
+    }
+  };
+</script>
+
+
+{% endblock %}

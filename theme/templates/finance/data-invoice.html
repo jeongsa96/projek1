@@ -15,7 +15,7 @@
                 </div>
                 {% endfor %}
             {% endif %}
-            <select  class="select validator" id="pilihan" name="pilihan" required>
+            <select  class="select validator max-w-xs" id="pilihan" name="pilihan" required>
                 <option disabled selected value="">Pilih Projek</option>
                 {% for p in projek %}
                     <option value="{{ p.id }}">{{ p.client}}</option>
@@ -26,6 +26,7 @@
         </form>
     </fieldset>
     {% if invoice %}
+    <div class="overflow-x-scroll">    
         <table class="table table-sm mt-4">
             <thead>
             <tr>
@@ -55,14 +56,12 @@
                     <fieldset class="fieldset">
                         <form method="post" action="{% url 'finance-update' i.nomor_invoice %}">
                             {% csrf_token %}
-                            <div class="join">
+                            <div  class="join min-w-2xs">
                                 <div>
-                                    <label class="select join-item">
-                                        <select id="status" name="status" required>
-                                            <option {% if i.status == 'belum_lunas' %} selected {% endif %} value="belum_lunas">Belum Lunas</option>
-                                            <option {% if i.status == 'lunas' %} selected {% endif %} value="lunas">Lunas</option>
-                                        </select>
-                                    </label>
+                                    <select class="select join-item" id="status" name="status" required>
+                                        <option {% if i.status == 'belum_lunas' %} selected {% endif %} value="belum_lunas">Belum Lunas</option>
+                                        <option {% if i.status == 'lunas' %} selected {% endif %} value="lunas">Lunas</option>
+                                    </select>
                                 </div>
                                 <button class="btn btn-success join-item" type="submit">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-iconid="edit" data-svgname="Edit">

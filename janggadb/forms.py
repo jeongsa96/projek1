@@ -1,7 +1,8 @@
 from django import forms
 from django.forms.widgets import Textarea
-from django.contrib.auth.forms import UserCreationForm
-from .models import User, Project, Invoice, PO, Anggaran, data_Expense, monitoring_PO, Mapping_Report
+from django.contrib.auth.forms import UserCreationForm, PasswordChangeForm
+from django.contrib.auth.models import User
+from .models import *
     
 class LoginForm(forms.Form):
     username = forms.CharField(
@@ -18,7 +19,7 @@ class LoginForm(forms.Form):
     password = forms.CharField(
         widget = forms.PasswordInput(
             attrs = {
-               "id": "password", 
+               "id": "hs-toggle-password", 
                "name": "password", 
                 "class": "bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500",                
                 "type": "password",
@@ -38,7 +39,11 @@ class RegisterForm(UserCreationForm):
     password1 = forms.CharField(
         widget = forms.PasswordInput(
             attrs = {
-                "class": "bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                "type":"password",
+                "class": "input validator bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500",
+                "min-length":8,
+                "pattern":"(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}",
+                "title":"Must be more than 8 characters, including number, lowercase letter, uppercase letter",
             }
         )
     )
@@ -175,12 +180,30 @@ class InvoiceForm(forms.ModelForm):
             }
         )
     )
+    client_id = forms.ModelChoiceField(
+        queryset = Project.objects.only('id'),
+        empty_label = 'Pilih Client',
+        widget = forms.Select(
+            attrs = {
+                'class':'select validator p-2 mb-4 w-auto'
+            }
+        )
+    )
 
     class Meta:
         model = Invoice
         fields = ['nomor_invoice','nomor_po','tanggal_invoice','tanggal_jatuh_tempo','jumlah_tagihan','lampiran','status','client_id']
 
 class POform(forms.ModelForm):
+    client_id = forms.ModelChoiceField(
+        queryset = Project.objects.only('id'),
+        empty_label = 'Pilih Client',
+        widget = forms.Select(
+            attrs = {
+                'class':'select validator p-2 mb-4 w-auto'            
+            }
+        )
+    )
     vendor = forms.CharField(
         widget = forms.TextInput(
             attrs = {
@@ -220,8 +243,6 @@ class POform(forms.ModelForm):
                 'name':'deskripsi',
                 'type':'text',
                 'placeholder':'Deskripsi Barang',
-                'cols':30,
-                'rows':4,
             }
         )
     )
@@ -287,6 +308,33 @@ class AnggaranForm(forms.ModelForm):
                 'placeholder':'Jumlah Anggaran',
             }
         )
+    )
+    client_id = forms.ModelChoiceField(
+        queryset = Project.objects.only('id'),
+        empty_label = 'Pilih Client',
+        widget = forms.Select(
+            attrs = {
+                'class':'select validator p-2 mb-4 w-auto'            
+            }
+        )
+    )
+    jenis_anggaran = forms.ModelChoiceField(
+        queryset = Jenis_Anggaran.objects.only('id'),
+        label = 'Jenis Anggaran:',
+        widget = forms.Select(
+            attrs = {
+                'class':'hidden',
+                'data-select':"""{
+    "placeholder": "Pilih Anggaran",
+    "toggleTag": "<button type=\'button\' aria-expanded=\'false\'></button>",
+    "toggleClasses": "p-2 mb-4 max-w-md advance-select-toggle select select-disabled:pointer-events-none select-disabled:opacity-40",
+    "hasSearch": true,
+    "dropdownClasses": "advance-select-menu max-h-52 pt-0 overflow-y-auto",
+    "optionClasses": "advance-select-option selected:select-active",
+    "optionTemplate": "<div class=\'flex justify-between items-center w-full\'><span data-title></span></div>"
+    }""",
+            }
+        )
     )        
 
     class Meta:
@@ -306,6 +354,24 @@ class MonitoringForm(forms.ModelForm):
                 'placeholder':'Tanggal',
             }
         )
+    )
+    client_id = forms.ModelChoiceField(
+        queryset = Project.objects.only('id'),
+        empty_label = 'Pilih Client',
+        widget = forms.Select(
+            attrs = {
+                'class':'select validator p-2 mb-4 w-auto'            
+            }
+        )        
+    )
+    nomor_po = forms.ModelChoiceField(
+        queryset = PO.objects.only('nomor_po'),
+        empty_label = 'Nomor PO',
+        widget = forms.Select(
+            attrs = {
+                'class':'select validator p-2 mb-4 w-auto'            
+            }
+        )        
     )
     lampiran_sj = forms.FileField(
         widget = forms.FileInput(
@@ -333,14 +399,14 @@ class MonitoringForm(forms.ModelForm):
         fields = ['client_id','nomor_po','tanggal','lampiran_sj','lampiran_foto']
 
 class ReportForm(forms.ModelForm):
-    segmen = forms.CharField(
+    tata_letak = forms.CharField(
         widget = forms.TextInput(
             attrs = {
                 'class':'input validator p-2 mb-4 w-auto',
-                'id':'segmen',
-                'name':'segmen',
+                'id':'tata-letak',
+                'name':'tata-letak',
                 'type':'text',
-                'placeholder':'Segmen',
+                'placeholder':'Tata Letak',
             }
         )
     )        
@@ -376,7 +442,144 @@ class ReportForm(forms.ModelForm):
             }
         )
     )
+    client_id = forms.ModelChoiceField(
+        queryset = Project.objects.only('id'),
+        label = 'Client:',
+        widget = forms.Select(
+            attrs = {
+                'class':'hidden',
+                'data-select':"""{
+    "placeholder": "Pilih Client",
+    "toggleTag": "<button type=\'button\' aria-expanded=\'false\'></button>",
+    "toggleClasses": "p-2 mb-4 max-w-md advance-select-toggle select select-disabled:pointer-events-none select-disabled:opacity-40",
+    "hasSearch": true,
+    "dropdownClasses": "advance-select-menu max-h-52 pt-0 overflow-y-auto",
+    "optionClasses": "advance-select-option selected:select-active",
+    "optionTemplate": "<div class=\'flex justify-between items-center w-full\'><span data-title></span></div>"
+    }""",
+            }
+        )
+    )
+    jenis_pekerjaan = forms.ModelChoiceField(
+        queryset = Pekerjaan_mapping.objects.only('jenis_pekerjaan'),
+        label = 'Pekerjaan:',
+        widget = forms.Select(
+            attrs = {
+                'class':'hidden',
+                'data-select':"""{
+    "placeholder": "Pilih Pekerjaan",
+    "toggleTag": "<button type=\'button\' aria-expanded=\'false\'></button>",
+    "toggleClasses": "p-2 mb-4 max-w-md advance-select-toggle select select-disabled:pointer-events-none select-disabled:opacity-40",
+    "hasSearch": true,
+    "dropdownClasses": "advance-select-menu max-h-52 pt-0 overflow-y-auto",
+    "optionClasses": "advance-select-option selected:select-active",
+    "optionTemplate": "<div class=\'flex justify-between items-center w-full\'><span data-title></span></div>"
+    }""",
+            }
+        )
+    )
 
     class Meta:
         model = Mapping_Report
-        fields = ['client_id','segmen','jenis_pekerjaan','total_mapping','aktual_mapping','tanggal']
+        fields = ['client_id','tata_letak','jenis_pekerjaan','total_mapping','aktual_mapping','tanggal']
+
+class updateProfileForm(forms.ModelForm):
+    username = forms.CharField(
+        widget = forms.TextInput(
+            attrs = {
+                'class':'grow',
+                'type':'hidden',
+                'id':'username',
+                'name':'username',                
+            }
+        )
+    )
+    email = forms.CharField(
+        widget = forms.TextInput(
+            attrs = {
+                'class':'grow',
+                'type':'email',
+                'id':'email',
+                'name':'email',                
+            }
+        )
+    )
+    first_name = forms.CharField(
+        widget = forms.TextInput(
+            attrs = {
+                'class':'grow',
+                'type':'text',
+                'id':'first-name',
+                'name':'first-name',                
+            }
+        )
+    )
+    last_name = forms.CharField(
+        widget = forms.TextInput(
+            attrs = {
+                'class':'grow',
+                'type':'text',
+                'id':'last-name',
+                'name':'last-name',                
+            }
+        )
+    )
+
+    class Meta:
+        model = User
+        fields = ['username','email','first_name','last_name']
+
+class photoProfileForm(forms.ModelForm):    
+    photo = forms.FileField(
+        widget = forms.FileInput(
+            attrs = {
+                'class':'file-input',
+                'type':'file',
+                'id':'images',
+                'name':'images',
+                'onChange':'loadFile(event);',
+                'accept':'image/*',
+            }
+        )
+    )
+
+    class Meta:
+        model = Profile
+        fields = ['photo']
+
+class changePasswordForm(PasswordChangeForm):
+    old_password = forms.CharField(
+        widget = forms.PasswordInput(
+            attrs = {
+                'class':'py-2.5 sm:py-3 ps-4 pe-10 block w-full border-gray-200 rounded-lg sm:text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600',
+                'type':'password',
+                'id':'old-password',
+                'name':'old_password',
+            }
+        )
+    )
+    new_password1 = forms.CharField(
+        widget = forms.PasswordInput(
+            attrs = {
+                'class':'py-2.5 sm:py-3 ps-4 pe-10 block w-full border-gray-200 rounded-lg sm:text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600',
+                'type':'password',
+                'id':'new-password1',
+                'name':'new_pass1',
+            }
+        )
+    )
+    new_password2 = forms.CharField(
+        widget = forms.PasswordInput(
+            attrs = {
+                'class':'py-2.5 sm:py-3 ps-4 pe-10 block w-full border-gray-200 rounded-lg sm:text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600',
+                'type':'password',
+                'id':'new-password2',
+                'name':'new_pass2',
+            }
+        )
+    )
+
+    class Meta:
+        model = User
+        fields = ['old_password','new_password1','new_password2']
+ 

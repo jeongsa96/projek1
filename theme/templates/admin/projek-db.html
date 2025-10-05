@@ -1,20 +1,26 @@
-{% extends "admin/layout.html" %}
-{% load static %}
+{% extends "admin/layout.html" %} {% load static %} {% block content %}
+<fieldset class="fieldset">
+  <form method="post">
+    <legend class="fieldset-legend">Projek</legend>
+    <select class="hidden" data-select='{
+    "placeholder": "Pilih Client",
+    "toggleTag": "<button type=\"button\" aria-expanded=\"false\"></button>",
+    "toggleClasses": "p-2 max-w-xs advance-select-toggle select select-disabled:pointer-events-none select-disabled:opacity-40",
+    "hasSearch": true,
+    "dropdownClasses": "advance-select-menu max-w-xs max-h-52 pt-0 overflow-y-auto",
+    "optionClasses": "advance-select-option selected:select-active",
+    "optionTemplate": "<div class=\"flex justify-between items-center w-full\"><span data-title></span><span class=\"icon-[tabler--check] shrink-0 size-4 text-primary hidden selected:block \"></span></div>"
+    }' required>
+      <option disabled selected value="">Pilih Projek</option>
+      {% if projek %} {% for p in projek %}
+      <option value="{{ p.id }}">{{ p.client }}</option>
+      {% endfor %} {% endif %}
+    </select>
+    <p class="validator-hint">Required</p>
+    <button class="btn btn-success" type="submit">Submit</button>
+  </form>
+</fieldset>
 
-{% block content %}
-    <fieldset class="fieldset">
-        <form method="post">
-            <legend class="fieldset-legend">Projek</legend>
-            <select class="select validator" required>
-                <option disabled selected value="">Pilih Projek</option>
-                {% if projek %}
-                    {% for p in projek %}
-                        <option value={{ p.client }}>{{ p.client }}</option>   
-                    {% endfor %}             
-                {% endif %}
-            </select>
-            <p class="validator-hint">Required</p>
-            <button class="btn btn-success" type="submit">Submit</button>
-        </form>
-    </fieldset>
+<script src="{% static "js/flyonui.js" %}"></script>
+
 {% endblock %}

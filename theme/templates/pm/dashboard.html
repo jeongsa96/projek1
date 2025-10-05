@@ -48,14 +48,12 @@
         {% csrf_token %}
         <div class="join">
             <div>
-                <label class="select join-item">
-                    <select id="segmen" name="segmen" required>
-                        <option selected value="">Pilih Segmen</option>
-                        {% for ls in list_segmen %} 
-                        <option value="{{ ls.segmen }}">{{ ls.segmen }}</option>
-                        {% endfor %}                
-                    </select>
-                </label>
+                <select class="select join-item" id="segmen" name="segmen" required>
+                    <option selected value="">Pilih Segmen</option>
+                    {% for ls in list_segmen %} 
+                    <option value="{{ ls.segmen }}">{{ ls.segmen }}</option>
+                    {% endfor %}                
+                </select>
             </div>
             <button class="btn btn-success join-item" type="submit">
                 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAbElEQVR4nO3UsQ2AMAwF0YMRWI1JGAQxFyvRmIaCgiYxJNj6J7lJ9aQkBhUoe2niA2oTwAQgI2ACll6AEdivs60F4KkZOG6IgcaAEkQRwByzpgB4rqDrI8z9De1vi6g0AUwAsgDMOXEBii86AcUnw48cScs3AAAAAElFTkSuQmCC" alt="enter-2">

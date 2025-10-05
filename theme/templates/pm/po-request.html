@@ -16,7 +16,7 @@
                 </div>
                 {% endfor %}
             {% endif %}
-            <select class="select validator" required name="pilihan" id="pilihan">
+            <select class="select validator max-w-xs" required name="pilihan" id="pilihan">
                 <option disabled selected value="">Pilih Projek</option>
                 {% if projek %}
                     {% for p in projek %}
@@ -57,14 +57,12 @@
                             {% csrf_token %}
                             <div class="join">
                                 <div>
-                                    <label class="select join-item">
-                                        <select id="status" name="status" required>
-                                            <option {% if c.status == 'menunggu persetujuan' %} selected {% endif %} value="menunggu persetujuan">Menunggu Persetujuan</option>
-                                            <option {% if c.status == 'disetujui' %} selected {% endif %} value="disetujui">Disetujui</option>
-                                            <option {% if c.status == 'telah dikirim' %} selected {% endif %} value="telah dikirim">Telah Dikirim</option>
-                                            <option {% if c.status == 'barang sampai' %} selected {% endif %} value="barang sampai">Barang Sampai</option>
-                                        </select>
-                                    </label>
+                                    <select class="select join-item" id="status" name="status" required>
+                                        <option {% if c.status == 'menunggu persetujuan' %} selected {% endif %} value="menunggu persetujuan">Menunggu Persetujuan</option>
+                                        <option {% if c.status == 'disetujui' %} selected {% endif %} value="disetujui">Disetujui</option>
+                                        <option {% if c.status == 'telah dikirim' %} selected {% endif %} value="telah dikirim">Telah Dikirim</option>
+                                        <option {% if c.status == 'barang sampai' %} selected {% endif %} value="barang sampai">Barang Sampai</option>
+                                    </select>
                                 </div>
                                 <button class="btn btn-success join-item" type="submit">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-iconid="edit" data-svgname="Edit">
@@ -74,7 +72,7 @@
                                 </button>
                             </div>
                         </form>
-                    </fieldset>
+                        </fieldset>
                     </td>
                 </tr>   
             {% endfor %}      
