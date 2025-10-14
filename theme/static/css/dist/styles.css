@@ -8,6 +8,7 @@
     --font-serif: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
     --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
       "Courier New", monospace;
+    --color-red-600: oklch(57.7% 0.245 27.325);
     --color-red-900: oklch(39.6% 0.141 25.723);
     --color-blue-500: oklch(62.3% 0.214 259.815);
     --color-blue-600: oklch(54.6% 0.245 262.881);
@@ -36,12 +37,10 @@
     --color-black: #000;
     --color-white: #fff;
     --spacing: 0.25rem;
-    --container-3xs: 16rem;
     --container-2xs: 18rem;
     --container-xs: 20rem;
     --container-sm: 24rem;
     --container-md: 28rem;
-    --container-3xl: 48rem;
     --text-xs: 0.75rem;
     --text-xs--line-height: calc(1 / 0.75);
     --text-sm: 0.875rem;
@@ -4142,9 +4141,6 @@
     color: var(--color-base-content);
     font-weight: 600;
   }
-  .mb-0 {
-    margin-bottom: calc(var(--spacing) * 0);
-  }
   .mb-0\.5 {
     margin-bottom: calc(var(--spacing) * 0.5);
   }
@@ -4153,9 +4149,6 @@
   }
   .mb-2 {
     margin-bottom: calc(var(--spacing) * 2);
-  }
-  .mb-3 {
-    margin-bottom: calc(var(--spacing) * 3);
   }
   .mb-4 {
     margin-bottom: calc(var(--spacing) * 4);
@@ -4872,15 +4865,6 @@
   .min-w-2xs {
     min-width: var(--container-2xs);
   }
-  .min-w-3 {
-    min-width: calc(var(--spacing) * 3);
-  }
-  .min-w-3xl {
-    min-width: var(--container-3xl);
-  }
-  .min-w-3xs {
-    min-width: var(--container-3xs);
-  }
   .min-w-24 {
     min-width: calc(var(--spacing) * 24);
   }
@@ -4889,15 +4873,6 @@
   }
   .min-w-48 {
     min-width: calc(var(--spacing) * 48);
-  }
-  .min-w-md {
-    min-width: var(--container-md);
-  }
-  .min-w-sm {
-    min-width: var(--container-sm);
-  }
-  .min-w-xs {
-    min-width: var(--container-xs);
   }
   .flex-1 {
     flex: 1;
@@ -5595,6 +5570,9 @@
   }
   .bg-primary {
     background-color: var(--color-primary);
+  }
+  .bg-red-600 {
+    background-color: var(--color-red-600);
   }
   .bg-success {
     background-color: var(--color-success);

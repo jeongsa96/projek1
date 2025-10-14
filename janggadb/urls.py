@@ -27,5 +27,6 @@ urlpatterns = [
     path('admin-jangga/projek-db', views.Admin_PD, name="admin-projekdb"),
     path('admin-jangga/projek-baru', views.Admin_PB, name="admin-projek-baru"),
     path('admin-jangga/daily-report', views.Admin_DR, name="admin-daily-report"),
+    path('client/', views.Client, name="client-dashboard"),
     path('logout/', views.Logout, name="logout"),
 ]

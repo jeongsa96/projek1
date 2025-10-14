@@ -1,5 +1,5 @@
-{% extends "admin/layout.html" %} {% load static %} 
-{% block title %}Admin - Dashboard{% endblock %}
+{% extends "client/layout.html" %} {% load static %} 
+{% block title %}{{user}} - Dashboard{% endblock %}
 {% block content %}
 <div class="breadcrumbs text-lg font-bold mt-2">
   <ul>
@@ -27,9 +27,7 @@
     <div class="card-body">
       <h2 class="card-title">Progress Rata-rata</h2>
       <div class="card-actions self-end text-right p-8">
-        {% if rata %}
-        <p class="text-4xl">{{ rata }} %</p>
-        {% endif %}
+        <p class="text-4xl">{{ rata }}</p>
       </div>
     </div>
   </div>
@@ -83,8 +81,8 @@
         <div>
           <select
             class="select join-item"
-            id="client"
-            name="client"
+            id="fase"
+            name="fase"
             required>
             <option selected value="">Pilih Projek</option>
             {% for p in pro %}

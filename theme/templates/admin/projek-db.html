@@ -1,8 +1,9 @@
 {% extends "admin/layout.html" %} {% load static %} {% block content %}
 <fieldset class="fieldset">
   <form method="post">
+    {% csrf_token %}
     <legend class="fieldset-legend">Projek</legend>
-    <select class="hidden" data-select='{
+    <select class="hidden" id="pilih" name="pilih" data-select='{
     "placeholder": "Pilih Client",
     "toggleTag": "<button type=\"button\" aria-expanded=\"false\"></button>",
     "toggleClasses": "p-2 max-w-xs advance-select-toggle select select-disabled:pointer-events-none select-disabled:opacity-40",
@@ -20,6 +21,35 @@
     <button class="btn btn-success" type="submit">Submit</button>
   </form>
 </fieldset>
+
+{% if files %}
+<div class="overflow-x-scroll">    
+    <table class="table table-sm mt-4">
+        <thead>
+        <tr>
+            <th></th>
+            <th>File</th>
+            <th>Client</th>
+            <th>Tanggal Terbit</th>
+            <th>Tanggal Jatuh Tempo</th>
+            <th>Lampiran</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for f in files %}
+            <tr>
+                <th>{{ forloop.counter }}</th>
+                <td>{{ f.file }}</td>
+                <td>{{ f.client }}</td>
+                <td>{{ f.tanggal_terbit }}</td>
+                <td>{{ f.tanggal_jatuh_tempo }}</td>
+                <td><a class="link link-info" href="{{ f.file_url }}" target="_blank">{{ f.file_name }}</a></td>
+            </tr>   
+        {% endfor %}      
+        </tbody>
+    </table>
+</div>
+{% endif %}
 
 <script src="{% static "js/flyonui.js" %}"></script>
 

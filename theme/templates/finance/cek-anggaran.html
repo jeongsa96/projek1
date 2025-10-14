@@ -17,25 +17,28 @@
             <p class="validator-hint">Required</p>
             <button class="btn btn-info" type="submit">Submit</button>
     </fieldset>
-    {% if data_anggaran %}
+    {% if expense %}
     <table class="table table-sm mt-4">
             <thead>
             <tr>
                 <th>No. </th>
                 <th>Task</th>
-                <th>tanggal</th>
-                <th>Aktual</th>
+                <th>Client</th>
+                <th>Deskripsi</th>
+                <th>Tanggal</th>
                 <th>Sisa Budget</th>
             </tr>
             </thead>
             <tbody>
-                {% for e in expense %}
-                    <tr>
-                    <td>{{ forloop.counter }}</td>
-                    <td>{{ e.jenis_anggaran }}</td>
-                    <td>{{ e.tanggal }}</td>
-                    <td>Rp. {{ e.total }}</td>
-                    <td>Rp. {{ e.anggaran_id.total_anggaran }}</td>
+                {% for d in expense %}
+                    <tr class="{% if d.total_anggaran < 0 %}bg-red-600{% endif %}">
+                        <td>{{ forloop.counter }}</td>
+                        <td>{{ d.anggaran_id__jenis_anggaran }}</td>
+                        <td>{{ d.anggaran_id__client_id }}</td>
+                        <td>{{ d.anggaran_id__deskripsi }}</td>
+                        <td>{{ d.tanggal }}</td>
+                        <td>Rp. {{ d.anggaran_id__total_anggaran }}</td>
+
                     </tr>   
                 {% endfor %} 
             </tbody>

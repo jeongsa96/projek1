@@ -64,7 +64,7 @@ class RegisterForm(UserCreationForm):
 
     class Meta:
         model = User
-        fields = ('username','email','password1','password2','is_admin','is_projectManager','is_logistik','is_finance')
+        fields = ('username','email','password1','password2','is_admin','is_projectManager','is_logistik','is_finance','is_client')
     
 class ProjekForm(forms.ModelForm):
     client = forms.CharField(
