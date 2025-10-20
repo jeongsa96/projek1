@@ -15,29 +15,29 @@
   </ul>
 </div>
 
-<div class="grid grid-cols-1 md:grid-cols-3 gap-14 mb-4">
-  <div class="card bg-primary text-primary-content w-auto h-48 mt-4">
-    <div class="card-body">
-      <h2 class="card-title">Progress Rata-rata</h2>
-      <div class="card-actions self-end text-right p-8">
-        <p class="text-4xl">{{ rata }} %</p>
-      </div>
+<div class="grid grid-cols-2 md:grid-cols-5 mb-4">
+  <div class="cursor-pointer overflow-hidden relative transition-all duration-500 hover:translate-y-2 w-48 h-16 bg-neutral-100 rounded-lg shadow-xl flex flex-row items-center justify-evenly gap-2 p-2 before:absolute before:w-full hover:before:top-0 before:duration-500 before:-top-1 before:h-1 before:bg-purple-200">
+    <div>
+      <span class="font-bold text-left">Rata-rata Progress</span>
+      <p class="line-clamp-3 self-end text-right">
+        {{ rata }} %
+      </p>
     </div>
   </div>
-  <div class="card bg-success text-primary-content w-auto h-48 mt-4">
-    <div class="card-body">
-      <h2 class="card-title">Progress Selesai</h2>
-      <div class="card-actions self-end text-right p-8">
-        <p class="text-4xl">{{ total }} Pekerjaan</p>
-      </div>
+  <div class="cursor-pointer overflow-hidden relative transition-all duration-500 hover:translate-y-2 w-48 h-16 bg-neutral-100 rounded-lg shadow-xl flex flex-row items-center justify-evenly gap-2 p-2 before:absolute before:w-full hover:before:top-0 before:duration-500 before:-top-1 before:h-1 before:bg-purple-200">
+    <div>
+      <span class="font-bold text-left">Progress Selesai</span>
+      <p class="line-clamp-3 self-end text-right">
+        {{ total }} Pekerjaan
+      </p>
     </div>
   </div>
-  <div class="card bg-info text-primary-content w-auto h-48 mt-4">
-    <div class="card-body">
-      <h2 class="card-title">Title!</h2>
-      <div class="card-actions self-end text-right p-8">
-        <p class="text-4xl">0</p>
-      </div>
+  <div class="cursor-pointer overflow-hidden relative transition-all duration-500 hover:translate-y-2 w-48 h-16 bg-neutral-100 rounded-lg shadow-xl flex flex-row items-center justify-evenly gap-2 p-2 before:absolute before:w-full hover:before:top-0 before:duration-500 before:-top-1 before:h-1 before:bg-purple-200">
+    <div>
+      <span class="font-bold text-left">Test</span>
+      <p class="line-clamp-3 self-end text-right">
+        0
+      </p>
     </div>
   </div>
 </div>
@@ -48,10 +48,10 @@
         {% csrf_token %}
         <div class="join">
             <div>
-                <select class="select join-item" id="segmen" name="segmen" required>
-                    <option selected value="">Pilih Segmen</option>
-                    {% for ls in list_segmen %} 
-                    <option value="{{ ls.segmen }}">{{ ls.segmen }}</option>
+                <select class="select join-item" id="client" name="client" required>
+                    <option selected value="">Pilih Projek</option>
+                    {% for p in projek %} 
+                    <option value="{{ p.id }}">{{ p.client }}</option>
                     {% endfor %}                
                 </select>
             </div>

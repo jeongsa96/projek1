@@ -1,0 +1,146 @@
+{% extends "logistik/layout.html" %}
+{% load static %}
+{% load widget_tweaks %}
+{% block content %}
+<fieldset class="fieldset">
+  <form method="post">
+    {% csrf_token %}
+    <legend class="fieldset-legend">Projek</legend>
+    <select class="hidden" id="pilih" name="pilih" data-select='{
+    "placeholder": "Pilih Client",
+    "toggleTag": "<button type=\"button\" aria-expanded=\"false\"></button>",
+    "toggleClasses": "p-2 max-w-xs advance-select-toggle select select-disabled:pointer-events-none select-disabled:opacity-40",
+    "hasSearch": true,
+    "dropdownClasses": "advance-select-menu max-w-xs max-h-52 pt-0 overflow-y-auto",
+    "optionClasses": "advance-select-option selected:select-active",
+    "optionTemplate": "<div class=\"flex justify-between items-center w-full\"><span data-title></span><span class=\"icon-[tabler--check] shrink-0 size-4 text-primary hidden selected:block \"></span></div>"
+    }' required>
+      <option disabled selected value="">Pilih Projek</option>
+      {% for p in projek %}
+      <option value="{{ p.id }}">{{ p.client }}</option>
+      {% endfor %}
+    </select>
+    <p class="validator-hint">Required</p>
+    <button class="btn btn-success" type="submit" id="submitProjek" name="submitProjek">Submit</button>
+  </form>
+</fieldset>
+
+{% if stock %}
+<ul class="menu menu-horizontal bg-base-200 my-2 p-0">
+    <li>
+        <label for="my_modal_cekStock" class="btn btn-success">Stock Barang</label>
+    </li>
+    <li>
+        <label for="my_modal_barangKeluar" class="btn btn-success">Barang Keluar</label>
+    </li>     
+</ul>
+{% endif %}
+
+<input type="checkbox" class="modal-toggle" id="my_modal_cekStock"/>
+<div class="modal" role="dialog">
+  <div class="modal-box">
+    <h3 class="text-lg font-bold">Stock Barang</h3>
+    <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+        <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+            <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                <tr>
+                    <th scope="col" class="px-6 py-3">
+                        Nama Barang
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        Jumlah Barang
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        Sisa Barang
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        Satuan
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        persentase
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for o in stock %}
+                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 border-gray-200 hover:bg-gray-50 dark:hover:bg-gray-600">
+                    <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                        {{ o.nama_barang }}
+                    </th>
+                    <td class="px-6 py-4">
+                        {{ o.jumlah }}
+                    </td>
+                    <td class="px-6 py-4">
+                        {{ o.sisa_barang }}
+                    </td>
+                    <td class="px-6 py-4">
+                        {{ o.satuan }}
+                    </td>
+                    <td class="px-6 py-4">
+                        {{ o.persen }}%
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+  </div>
+  <label class="modal-backdrop" for="my_modal_cekStock">Close</label>
+</div>
+
+<input type="checkbox" class="modal-toggle" id="my_modal_barangKeluar"/>
+<div class="modal" role="dialog">
+    <div class="modal-box">
+    <h3 class="text-lg font-bold">Input Barang Keluar</h3>
+    <form class="flex flex-col mb-4" method="post">
+        {% csrf_token %}
+        {{ form.client_id }}
+        {{ form.stock_opname }}
+        {{ form.jumlah }}
+        {{ form.satuan }}
+        <button type="submit" name="submitKeluar" id="submitKeluar" class="bg-gradient-to-r from-indigo-500 to-blue-500 text-white font-bold py-2 px-4 rounded-md mt-4 hover:bg-indigo-600 hover:to-blue-600 transition ease-in-out duration-150">Submit</button>
+    </form>
+    <h3 class="text-lg font-bold">Stock Keluar</h3>
+    <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+        <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+            <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                <tr>
+                    <th scope="col" class="px-6 py-3">
+                        Nama Barang
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        Jumlah Barang
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        Sisa Barang
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        Satuan
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for t in transaksi %}
+                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 border-gray-200 hover:bg-gray-50 dark:hover:bg-gray-600">
+                    <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                        {{ t.stock_opname }}
+                    </th>
+                    <td class="px-6 py-4">
+                        {{ t.tanggal_transaksi }}
+                    </td>
+                    <td class="px-6 py-4">
+                        {{ t.jumlah }}
+                    </td>
+                    <td class="px-6 py-4">
+                        {{ t.satuan }}
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    </div>
+  <label class="modal-backdrop" for="my_modal_barangKeluar">Close</label>
+</div>  
+<script src="{% static "js/flyonui.js" %}"></script>    
+{% endblock %}

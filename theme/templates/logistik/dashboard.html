@@ -1,7 +1,186 @@
 {% extends "logistik/layout.html" %}
 
 {% block content %}
-<div>
-    <h1 class="font-extrabold text-red-900 text-4xl">LOGISTIK</h1>
+
+<div class="breadcrumbs text-lg font-bold mt-2">
+  <ul>
+    <li>
+      <a>
+        <svg
+          class="w-5 h-5 text-blue-700 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
+          aria-hidden="true"
+          xmlns="http://www.w3.org/2000/svg"
+          fill="currentColor"
+          viewBox="0 0 22 21">
+          <path
+            d="M16.975 11H10V4.025a1 1 0 0 0-1.066-.998 8.5 8.5 0 1 0 9.039 9.039.999.999 0 0 0-1-1.066h.002Z" />
+          <path
+            d="M12.5 0c-.157 0-.311.01-.565.027A1 1 0 0 0 11 1.02V10h8.975a1 1 0 0 0 1-.935c.013-.188.028-.374.028-.565A8.51 8.51 0 0 0 12.5 0Z" />
+        </svg>
+        Dashboard
+      </a>
+    </li>
+  </ul>
 </div>
+
+<div class="w-full bg-white shadow-md p-6">
+    <legend class="fieldset-legend mb-3">Status Barang</legend>
+    <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+        <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+            <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                <tr>
+                    <th scope="col" class="px-6 py-3">
+                        Nama Barang
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        Vendor
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        Jumlah
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        Jumlah diterima
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        Satuan
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        Status
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for s in status %}
+                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 border-gray-200 hover:bg-gray-50 dark:hover:bg-gray-600">
+                    <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                        <form method="post" action="{% url 'logistik-update' s.nomor_po %}">
+                        {% csrf_token %}
+                        {{ s.deskripsi_barang }}
+                        <input class="input validator w-auto p-2" id="deskripsi" name="deskripsi" hidden value="{{ s.deskripsi_barang }}">
+                    </th>
+                    <td class="px-6 py-4">
+                        {{ s.vendor }}
+                        {% for p in projek%}
+                        <input class="input validator w-auto p-2" type="number" id="clients" name="clients" hidden value="{{ p.id }}">
+                        {% endfor %}
+                    </td>
+                    <td class="px-6 py-4">
+                        {{ s.kuantitas }}
+                        <input class="input validator w-auto p-2" type="number" id="jumlah" name="jumlah" hidden value="{{ s.kuantitas }}">
+                    </td>
+                    <td class="px-6 py-4">
+                        <input class="input validator w-auto p-2" type="number" placeholder="Jumlah barang diterima" id="jumlah-barang" name="jumlah-barang">
+                    </td>
+                    <td class="px-6 py-4">
+                        {{ s.satuan }}
+                        <input class="input validator w-auto p-2" id="satuan" name="satuan" hidden value="{{ s.satuan }}">
+                    </td>
+                    <td class="px-6 py-4">
+                        <fieldset class="fieldset">
+                                {% csrf_token %}
+                                <div class="join min-w-xs">
+                                    <div>
+                                        <select class="select select-sm join-item" id="statusSelect" name="status" required>
+                                            <option value="0">Ubah Status</option>
+                                            <option {% if s.status != 'menunggu persetujuan' %} hidden {% endif %}{% if s.status == 'menunggu persetujuan' %} selected {% endif %} value="menunggu persetujuan">Menunggu Persetujuan</option>                                        
+                                            <option {% if s.status != 'disetujui' %} hidden {% endif %}{% if s.status == 'disetujui' %} selected {% endif %} value="disetujui">Disetujui</option>                                        
+                                            <option {% if s.status != 'telah dikirim' %} hidden {% endif %}{% if s.status == 'telah dikirim' %} selected {% endif %} value="telah dikirim">Telah dikirim</option>                                        
+                                            <option {% if s.status == 'barang sampai' %} selected {% endif %} value="barang sampai">Barang sampai</option>                                        
+                                        </select>
+                                    </div>
+                                    <button class="btn btn-sm btn-success join-item" type="submit">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-iconid="edit" data-svgname="Edit">
+                                            <path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"></path>
+                                            <path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"></path>
+                                        </svg>
+                                    </button>
+                                </div>
+                        </fieldset>
+
+                    </form>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div class="w-full bg-white shadow-md p-6">
+    <legend class="fieldset-legend mb-3">Stock Barang</legend>
+    <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+        <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+            <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                <tr>
+                    <th scope="col" class="px-6 py-3">
+                        Nama Barang
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        Jumlah Barang
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        Sisa Barang
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        Satuan
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        persentase
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for o in page_obj %}
+                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 border-gray-200 hover:bg-gray-50 dark:hover:bg-gray-600">
+                    <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                        {{ o.nama_barang }}
+                    </th>
+                    <td class="px-6 py-4">
+                        {{ o.jumlah }}
+                    </td>
+                    <td class="px-6 py-4">
+                        {{ o.sisa_barang }}
+                    </td>
+                    <td class="px-6 py-4">
+                        {{ o.satuan }}
+                    </td>
+                    <td class="px-6 py-4">
+                        {{ o.persen }}%
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- Pagination -->
+<nav class="flex justify-center items-center gap-x-1 my-2" aria-label="Pagination">
+  {% if page_obj.has_previous %}
+  <a href="?page={{ page_obj.previous_page_number }}">
+    <button type="button" class="min-h-9.5 min-w-9.5 py-2 px-2.5 inline-flex justify-center items-center gap-x-2 text-sm rounded-lg text-gray-800 hover:bg-gray-100 focus:outline-hidden focus:bg-gray-100 disabled:opacity-50 disabled:pointer-events-none dark:text-white dark:hover:bg-white/10 dark:focus:bg-white/10" aria-label="Previous">
+        <svg class="shrink-0 size-3.5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="m15 18-6-6 6-6"></path>
+        </svg>
+        <span aria-hidden="true" class="hidden sm:block">Previous</span>
+    </button>
+  </a>
+  {% endif %}
+  <div class="flex items-center gap-x-1">
+    <span class="min-h-9.5 min-w-9.5 flex justify-center items-center text-gray-800 py-2 px-3 text-sm rounded-lg focus:outline-hidden focus:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none dark:border-neutral-700 dark:text-white dark:focus:bg-white/10">Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}</span>
+  </div>
+  {% if page_obj.has_next %}
+  <a href="?page={{ page_obj.next_page_number }}">
+    <button type="button" class="min-h-9.5 min-w-9.5 py-2 px-2.5 inline-flex justify-center items-center gap-x-2 text-sm rounded-lg text-gray-800 hover:bg-gray-100 focus:outline-hidden focus:bg-gray-100 disabled:opacity-50 disabled:pointer-events-none dark:text-white dark:hover:bg-white/10 dark:focus:bg-white/10">
+        <span aria-hidden="true" class="hidden sm:block">Next</span>
+        <svg class="shrink-0 size-3.5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="m9 18 6-6-6-6"></path>
+        </svg>
+    </button>
+  </a>
+  {% endif %}
+</nav>
+<!-- End Pagination -->
+
+
 {% endblock %}

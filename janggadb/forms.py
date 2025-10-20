@@ -364,6 +364,17 @@ class MonitoringForm(forms.ModelForm):
             }
         )        
     )
+    jumlah = forms.CharField(
+        widget = forms.TextInput(
+            attrs = {
+                'class':'input validator p-2 mb-4 w-auto',
+                'id':'jumlah-barang',
+                'name':'jumlah-barang',
+                'type':'text',
+                'placeholder':'Jumlah barang dan satuan',
+            }
+        )
+    )  
     nomor_po = forms.ModelChoiceField(
         queryset = PO.objects.only('nomor_po'),
         empty_label = 'Nomor PO',
@@ -407,6 +418,18 @@ class ReportForm(forms.ModelForm):
                 'name':'tata-letak',
                 'type':'text',
                 'placeholder':'Tata Letak',
+                'autocomplete':'tata-letak',
+            }
+        )
+    )        
+    nomor_unit = forms.CharField(
+        widget = forms.TextInput(
+            attrs = {
+                'class':'input validator p-2 mb-4 w-auto',
+                'id':'nomor-unit',
+                'name':'nomor-unit',
+                'type':'text',
+                'placeholder':'Nomor Unit',
             }
         )
     )        
@@ -481,7 +504,7 @@ class ReportForm(forms.ModelForm):
 
     class Meta:
         model = Mapping_Report
-        fields = ['client_id','tata_letak','jenis_pekerjaan','total_mapping','aktual_mapping','tanggal']
+        fields = ['client_id','tata_letak','jenis_pekerjaan','total_mapping','aktual_mapping','tanggal','nomor_unit']
 
 class updateProfileForm(forms.ModelForm):
     username = forms.CharField(
@@ -582,4 +605,299 @@ class changePasswordForm(PasswordChangeForm):
     class Meta:
         model = User
         fields = ['old_password','new_password1','new_password2']
- 
+
+class pengajuanForm(forms.ModelForm):
+    client_id = forms.ModelChoiceField(
+        queryset = Project.objects.only('id'),
+        label = 'Client:',
+        widget = forms.Select(
+            attrs = {
+                'class':'hidden',
+                'data-select':"""{
+    "placeholder": "Pilih Client",
+    "toggleTag": "<button type=\'button\' aria-expanded=\'false\'></button>",
+    "toggleClasses": "p-2 mb-4 max-w-md advance-select-toggle select select-disabled:pointer-events-none select-disabled:opacity-40",
+    "hasSearch": true,
+    "dropdownClasses": "advance-select-menu max-h-52 pt-0 overflow-y-auto",
+    "optionClasses": "advance-select-option selected:select-active",
+    "optionTemplate": "<div class=\'flex justify-between items-center w-full\'><span data-title></span></div>"
+    }""",
+            }
+        )
+    )    
+    nama_barang = forms.CharField(
+        widget = forms.TextInput(
+            attrs = {
+                'class':'input validator p-2 mb-4 w-auto',
+                'id':'nama-barang',
+                'name':'nama-barang',
+                'type':'text',
+                'placeholder':'Nama Barang',
+            }
+        )
+    )        
+    tanggal = forms.DateField(
+        widget = forms.DateInput(
+            attrs = {
+                'class':'input validator p-2 mb-4 w-auto',
+                'id':'tgl',
+                'name':'tgl',
+                'type':'date',
+            }
+        )
+    )
+    jumlah = forms.IntegerField(
+        widget = forms.NumberInput(
+            attrs = {
+                'class':'input validator p-2 mb-4 w-auto',
+                'id':'jumlah',
+                'name':'jumlah',
+                'type':'number',
+                'placeholder':'Jumlah Barang',
+            }
+        )
+    )
+    satuan = forms.CharField(
+        widget = forms.TextInput(
+            attrs = {
+                'class':'input validator p-2 mb-4 w-auto',
+                'id':'satuan',
+                'name':'satuan',
+                'type':'text',
+                'placeholder':'Satuan',
+            }
+        )
+    )
+
+    class Meta:
+        model = Pengajuan_Barang
+        fields = ['client_id','nama_barang','tanggal','jumlah','satuan']
+
+class barangKeluarForm(forms.ModelForm):
+    client_id = forms.ModelChoiceField(
+        queryset = Project.objects.only('id'),
+        widget = forms.Select(
+            attrs = {
+                'class':'hidden',
+                'data-select':"""{
+    "placeholder": "Pilih Client",
+    "toggleTag": "<button type=\'button\' aria-expanded=\'false\'></button>",
+    "toggleClasses": "p-2 mb-4 max-w-lg advance-select-toggle select select-disabled:pointer-events-none select-disabled:opacity-40",
+    "hasSearch": true,
+    "dropdownClasses": "advance-select-menu max-h-52 pt-0 overflow-y-auto",
+    "optionClasses": "advance-select-option selected:select-active",
+    "optionTemplate": "<div class=\'flex justify-between items-center w-full\'><span data-title></span></div>"
+    }""",
+            }
+        )
+    )
+    stock_opname = forms.ModelChoiceField(
+        queryset = Stock_Opname.objects.only('id'),
+        widget = forms.Select(
+            attrs = {
+                'class':'hidden',
+                'data-select':"""{
+    "placeholder": "Nama Barang",
+    "toggleTag": "<button type=\'button\' aria-expanded=\'false\'></button>",
+    "toggleClasses": "p-2 mb-4 max-w-lg advance-select-toggle select select-disabled:pointer-events-none select-disabled:opacity-40",
+    "hasSearch": true,
+    "dropdownClasses": "advance-select-menu max-h-52 pt-0 overflow-y-auto",
+    "optionClasses": "advance-select-option selected:select-active",
+    "optionTemplate": "<div class=\'flex justify-between items-center w-full\'><span data-title></span></div>"
+    }""",
+            }
+        )
+    )     
+    jumlah = forms.IntegerField(
+        widget = forms.NumberInput(
+            attrs = {
+                'class':'input validator p-2 mb-4 w-auto',
+                'id':'jumlah',
+                'name':'jumlah',
+                'type':'number',
+                'placeholder':'Jumlah Barang',
+            }
+        )
+    )
+    satuan = forms.CharField(
+        widget = forms.TextInput(
+            attrs = {
+                'class':'input validator p-2 mb-4 w-auto',
+                'id':'satuan',
+                'name':'satuan',
+                'type':'text',
+                'placeholder':'Satuan',
+            }
+        )
+    )
+      
+    class Meta:
+        model = Transaksi_SO
+        fields = ['client_id','stock_opname','jumlah','satuan']
+
+class dailyForm(forms.ModelForm):
+    client_id = forms.ModelChoiceField(
+        queryset = Project.objects.only('id'),
+        widget = forms.Select(
+            attrs = {
+                'class':'hidden',
+                'data-select':"""{
+    "placeholder": "Pilih Client",
+    "toggleTag": "<button type=\'button\' aria-expanded=\'false\'></button>",
+    "toggleClasses": "p-2 mb-4 max-w-lg advance-select-toggle select select-disabled:pointer-events-none select-disabled:opacity-40",
+    "hasSearch": true,
+    "dropdownClasses": "advance-select-menu max-h-52 pt-0 overflow-y-auto",
+    "optionClasses": "advance-select-option selected:select-active",
+    "optionTemplate": "<div class=\'flex justify-between items-center w-full\'><span data-title></span></div>"
+    }""",
+            }
+        )
+    )
+    harian = forms.IntegerField(
+        widget = forms.NumberInput(
+            attrs = {
+                'class':'input validator p-2 mb-4 w-auto',
+                'id':'harian',
+                'name':'harian',
+                'type':'number',
+                'placeholder':'Harian',
+            }
+        )
+    )
+    sipil = forms.IntegerField(
+        widget = forms.NumberInput(
+            attrs = {
+                'class':'input validator p-2 mb-4 w-auto',
+                'id':'sipil',
+                'name':'sipil',
+                'type':'number',
+                'placeholder':'Sipil',
+            }
+        )
+    )
+    me = forms.IntegerField(
+        widget = forms.NumberInput(
+            attrs = {
+                'class':'input validator p-2 mb-4 w-auto',
+                'id':'me',
+                'name':'me',
+                'type':'number',
+                'placeholder':'ME',
+            }
+        )
+    )
+    plumbing = forms.IntegerField(
+        widget = forms.NumberInput(
+            attrs = {
+                'class':'input validator p-2 mb-4 w-auto',
+                'id':'plumbing',
+                'name':'plumbing',
+                'type':'number',
+                'placeholder':'Plumbing',
+            }
+        )
+    )
+    genteng = forms.IntegerField(
+        widget = forms.NumberInput(
+            attrs = {
+                'class':'input validator p-2 mb-4 w-auto',
+                'id':'genteng',
+                'name':'genteng',
+                'type':'number',
+                'placeholder':'Genteng',
+            }
+        )
+    )
+    lampiran_dokumentasi = forms.FileField(
+        widget = forms.FileInput(
+            attrs= {
+                'class':'file-input p-2 mb-4 w-auto',
+                'id':'lampiran-dokumentasi',
+                'name':'lampiran-dokumentasi',
+                'type':'file',
+            }
+        )
+    )
+    lampiran_cuaca = forms.FileField(
+        widget = forms.FileInput(
+            attrs= {
+                'class':'file-input p-2 mb-4 w-auto',
+                'id':'lampiran-cuaca',
+                'name':'lampiran-cuaca',
+                'type':'file',
+            }
+        )
+    )
+
+    class Meta:
+        model = Daily_Report
+        fields = '__all__'
+
+class penagihanForm(forms.ModelForm):
+    client_id = forms.ModelChoiceField(
+        queryset = Project.objects.only('id'),
+        widget = forms.Select(
+            attrs = {
+                'class':'hidden',
+                'data-select':"""{
+    "placeholder": "Pilih Client",
+    "toggleTag": "<button type=\'button\' aria-expanded=\'false\'></button>",
+    "toggleClasses": "p-2 mb-4 max-w-lg advance-select-toggle select select-disabled:pointer-events-none select-disabled:opacity-40",
+    "hasSearch": true,
+    "dropdownClasses": "advance-select-menu max-h-52 pt-0 overflow-y-auto",
+    "optionClasses": "advance-select-option selected:select-active",
+    "optionTemplate": "<div class=\'flex justify-between items-center w-full\'><span data-title></span></div>"
+    }""",
+            }
+        )
+    )   
+    lampiran_dokumentasi = forms.FileField(
+        widget = forms.FileInput(
+            attrs= {
+                'class':'file-input p-2 mb-4 w-auto',
+                'id':'lampiran-dokumentasi',
+                'name':'lampiran-dokumentasi',
+                'type':'file',
+            }
+        )
+    )
+    lampiran_lpp = forms.FileField(
+        widget = forms.FileInput(
+            attrs= {
+                'class':'file-input p-2 mb-4 w-auto',
+                'id':'lampiran-lpp',
+                'name':'lampiran-lpp',
+                'type':'file',
+            }
+        )
+    )         
+    lampiran_lokasi = forms.FileField(
+        widget = forms.FileInput(
+            attrs= {
+                'class':'file-input p-2 mb-4 w-auto',
+                'id':'lampiran-lokasi',
+                'name':'lampiran-lokasi',
+                'type':'file',
+            }
+        )
+    )         
+    lampiran_mapping = forms.FileField(
+        widget = forms.FileInput(
+            attrs= {
+                'class':'file-input p-2 mb-4 w-auto',
+                'id':'lampiran-mapping',
+                'name':'lampiran-mapping',
+                'type':'file',
+            }
+        )
+    )         
+    lampiran_monitoring = forms.FileField(
+        widget = forms.FileInput(
+            attrs= {
+                'class':'file-input p-2 mb-4 w-auto',
+                'id':'lampiran-monitoring',
+                'name':'lampiran-monitoring',
+                'type':'file',
+            }
+        )
+    )         
