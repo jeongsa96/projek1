@@ -54,7 +54,7 @@
                     <td><a class="link link-info" href="{{ i.lampiran.url }}" target="_blank">{{ i.get_filename}}</a></td>
                     <td>
                     <fieldset class="fieldset">
-                        <form method="post" action="{% url 'finance-update' i.nomor_invoice %}">
+                        <form method="post" action="{% url 'management-update' i.nomor_invoice %}">
                             {% csrf_token %}
                             <div  class="join min-w-2xs">
                                 <div>

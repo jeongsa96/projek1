@@ -8,8 +8,9 @@ class User(AbstractUser):
     is_admin = models.BooleanField('Is Admin', default=False)
     is_projectManager = models.BooleanField('Is Project Manager', default=False)
     is_logistik = models.BooleanField('Is Logistik', default=False)
-    is_finance = models.BooleanField('Is Finance', default=False)
+    is_management = models.BooleanField('Is Management', default=False)
     is_client = models.BooleanField('Is Client', default=False)
+    is_pelaksana = models.BooleanField('Is Pelaksana', default=False)
 
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
@@ -22,7 +23,9 @@ class Project(models.Model):
     client = models.CharField(max_length=100)
     lokasi = models.CharField(max_length=100)
     jenis_projek = models.CharField(max_length=100)
-    SPK = models.CharField(max_length=100)
+    nomor_SPK = models.CharField(max_length=100)
+    nominal_kontrak = models.BigIntegerField(null=False, default=0)
+    lampiran_SPK = models.FileField(upload_to='projek_baru/', blank=True)
 
     def __str__(self):
         return self.client 
@@ -121,11 +124,19 @@ class Mapping_Report(models.Model):
     tanggal = models.DateField(null=False)
 
 class Pengajuan_Barang(models.Model):
+    status_po = [
+        ('menunggu persetujuan', 'Menunggu Persetujuan'),
+        ('disetujui', 'Disetujui'),
+        ('telah dikirim', 'Telah Dikirim'),
+        ('barang sampai', 'Barang Sampai'),
+    ]
+
     client_id = models.ForeignKey(Project, null=False, on_delete=models.CASCADE)
     nama_barang = models.CharField(max_length=100)
     jumlah = models.IntegerField(null=False)
     satuan = models.CharField(max_length=20)
     tanggal = models.DateField(null=False)
+    status = models.CharField(choices=status_po, default='menunggu persetujuan', null=True)
 
 class Stock_Opname(models.Model):
     client_id = models.ForeignKey(Project, null=False, on_delete=models.CASCADE)

@@ -42,7 +42,7 @@ class RegisterForm(UserCreationForm):
                 "type":"password",
                 "class": "input validator bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500",
                 "min-length":8,
-                "pattern":"(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}",
+                "pattern":"^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z\d\s]).{8,}$",
                 "title":"Must be more than 8 characters, including number, lowercase letter, uppercase letter",
             }
         )
@@ -57,14 +57,14 @@ class RegisterForm(UserCreationForm):
     email = forms.EmailField(
         widget = forms.EmailInput(
             attrs = {
-                "class": "bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                "class":"bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             }
         )
     )
 
     class Meta:
         model = User
-        fields = ('username','email','password1','password2','is_admin','is_projectManager','is_logistik','is_finance','is_client')
+        fields = ('username','email','password1','password2','is_admin','is_projectManager','is_logistik','is_management','is_client')
     
 class ProjekForm(forms.ModelForm):
     client = forms.CharField(
@@ -87,6 +87,17 @@ class ProjekForm(forms.ModelForm):
             }
         )
     )
+    nominal_kontrak = forms.IntegerField(
+        widget = forms.NumberInput(
+            attrs = {
+                'class':'input validator p-2 mb-4 w-auto',
+                'id':'nominal-kontrak',
+                'name':'nominal-kontrak',
+                'type':'number',
+                'placeholder':'Nominal Kontrak',
+            }
+        )
+    )
     jenis_projek = forms.CharField(
         widget = forms.TextInput(
             attrs ={
@@ -97,20 +108,29 @@ class ProjekForm(forms.ModelForm):
             }
         )
     )
-    SPK = forms.CharField(
+    nomor_SPK = forms.CharField(
         widget = forms.TextInput(
             attrs = {
                 'class':'input validator p-2 mb-4 w-auto',
-                'placeholder':'SPK',
+                'placeholder':'No.SPK',
                 'id':'SPK',
                 'name':'SPK',
             }
         )
     )
-
+    lampiran_SPK = forms.FileField(
+        widget = forms.FileInput(
+            attrs= {
+                'class':'file-input p-2 mb-4 w-auto',
+                'id':'lampiran-spk',
+                'name':'lampiran-spk',
+                'type':'file',
+            }
+        )
+    )
     class Meta: 
         model = Project
-        fields = ('client','lokasi','jenis_projek','SPK')
+        fields = '__all__'
     
 class InvoiceForm(forms.ModelForm):
     nomor_invoice = forms.CharField(
@@ -900,4 +920,8 @@ class penagihanForm(forms.ModelForm):
                 'type':'file',
             }
         )
-    )         
+    )    
+
+    class Meta:
+        model = Penagihan
+        fields = '__all__'     

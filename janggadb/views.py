@@ -3,8 +3,11 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import update_session_auth_hash
 from django.core.paginator import Paginator
+from django.http import StreamingHttpResponse
 from .forms import LoginForm, RegisterForm, ProjekForm, InvoiceForm, POform, AnggaranForm, MonitoringForm, ReportForm, updateProfileForm, photoProfileForm, changePasswordForm, pengajuanForm, barangKeluarForm, dailyForm, penagihanForm
 from .models import *
+import cv2
+import threading
 from django.contrib import messages
 from django.http import JsonResponse
 import pandas as pd
@@ -46,7 +49,7 @@ def index(request):
                 role_map = {
                     'is_admin': 'admin-jangga',
                     'is_projectManager': 'project-manager',
-                    'is_finance': 'finance',
+                    'is_management': 'management',
                     'is_logistik': 'logistik',
                     'is_client': 'client-dashboard',
                 }
@@ -270,30 +273,7 @@ def Admin_PD(request):
     else:
         messages.error(request, 'Akses gagal')
         logout(request)
-        return redirect('index')
-
-
-@login_required
-def Admin_PB(request):
-    user = request.user
-    if user.is_authenticated and user.is_admin:
-        if request.method == 'POST':
-            form = ProjekForm(request.POST)
-            if form.is_valid():
-                projek = form.save()
-                messages.success(request, 'Input data berhasil')
-                return redirect('admin-projek-baru')
-            else:
-                messages.error(request, 'Input salah')
-        else:
-            form = ProjekForm()
-
-        context = {'form':form}
-        return render(request, 'admin/projek-baru.html', context)
-    else:
-        messages.error(request, 'Akses gagal')
-        logout(request)
-        return redirect('index')            
+        return redirect('index')           
 
 @login_required
 def Admin_MR(request):
@@ -340,11 +320,14 @@ def Admin_P(request):
     user = request.user
     if user.is_authenticated and user.is_admin:
         if request.method == 'POST':
-            form = penagihanForm(request.POST)
+            form = penagihanForm(request.POST, request.FILES)
             if form.is_valid():
                 form.save()
                 messages.success(request, 'Data Penagihan telah disimpan')
                 return redirect('admin-penagihan')
+            else:
+                for error in list(form.errors.values()):
+                    messages.error(request, error)
         else:
             form = penagihanForm()
 
@@ -673,27 +656,47 @@ def Logistik_SO(request):
         
 
 @login_required
-def Finance(request):
+def Management(request):
     user = request.user
-    if user.is_authenticated and user.is_finance:
+    if user.is_authenticated and user.is_management:
         return render(request,'finance/dashboard.html')
     else:
         messages.error(request, 'Akses gagal')
         logout(request)
         return redirect('index') 
 
-      
+@login_required        
+def Management_PB(request):
+    user = request.user
+    if user.is_authenticated and user.is_management:
+        if request.method == 'POST':
+            form = ProjekForm(request.POST)
+            if form.is_valid():
+                form.save()
+                messages.success(request, 'Data projek baru berhasil disimpan')
+                return redirect('management-projek-baru')
+            else:
+                messages.error(request, 'data input salah')
+        else:
+            form = ProjekForm()
+
+            context = {'form':form,}
+            return render(request,'finance/projek-baru.html', context)
+    else:
+        messages.error(request, 'Akses gagal')
+        logout(request)
+        return redirect('index')         
     
 @login_required        
-def Finance_A(request):
+def Management_A(request):
     user = request.user
-    if user.is_authenticated and user.is_finance:
+    if user.is_authenticated and user.is_management:
         if request.method == 'POST':
             anggaran = AnggaranForm(request.POST)
             if anggaran.is_valid():
                 form = anggaran.save()
                 messages.success(request, 'Data anggaran berhasil disimpan')
-                return redirect('finance-anggaran')
+                return redirect('management-anggaran')
             else:
                 messages.error(request, 'data anggaran salah')
         else:
@@ -707,9 +710,9 @@ def Finance_A(request):
         return redirect('index')        
 
 @login_required
-def Finance_AC(request):
+def Management_AC(request):
     user = request.user
-    if user.is_authenticated and user.is_finance:
+    if user.is_authenticated and user.is_management:
         client = Project.objects.only("client")
         if request.method == 'POST':
             client_input = request.POST['client']
@@ -733,9 +736,9 @@ def Finance_AC(request):
         return redirect('index')  
 
 @login_required
-def Finance_E(request):
+def Management_E(request):
     user = request.user
-    if user.is_authenticated and user.is_finance:
+    if user.is_authenticated and user.is_management:
         client = Project.objects.only("client")
         if request.method == 'POST':
             if 'inputClient' in request.POST:
@@ -762,7 +765,7 @@ def Finance_E(request):
                 expense.save()
 
                 messages.success(request, 'Data anggaran berhasil diupdate')
-                return redirect('finance-expense')
+                return redirect('management-expense')
         else:        
             context = {'client':client}
             return render(request,'finance/expense.html', context)
@@ -772,17 +775,17 @@ def Finance_E(request):
         return redirect('index')          
 
 @login_required
-def Finance_IB(request):
+def Management_IB(request):
     user = request.user
-    if user.is_authenticated and user.is_finance:
+    if user.is_authenticated and user.is_management:
         if request.method == 'POST':
             invoiceForm = InvoiceForm(request.POST, request.FILES)        
             if invoiceForm.is_valid():
                 iForm = invoiceForm.save()
                 messages.success(request, 'Data Invoice berhasil disimpan')
-                return redirect('finance-invoice-baru')
+                return redirect('management-invoice-baru')
             else:            
-                messages.error(request, 'data invoice salah')
+                messages.error(request, 'Data invoice salah')
 
         else:
             invoiceForm = InvoiceForm()       
@@ -794,9 +797,9 @@ def Finance_IB(request):
         return redirect('index')  
 
 @login_required        
-def Finance_DI(request):
+def Management_DI(request):
     user = request.user
-    if user.is_authenticated and user.is_finance:
+    if user.is_authenticated and user.is_management:
         projek = Project.objects.only('client')
         if request.method == 'POST':
             client = request.POST['pilihan']
@@ -811,11 +814,28 @@ def Finance_DI(request):
         logout(request)
         return redirect('index')          
 
-def Finance_updateStatus(request, id=id):
+def Management_updateStatus(request, id=id):
     status = request.POST['status']
     Invoice.objects.filter(nomor_invoice=id).update(status=status)
     messages.success(request, 'status telah diupdate')
-    return redirect('finance-invoice')
+    return redirect('management-invoice')
+
+def Management_P(request):
+    user = request.user
+    if user.is_authenticated and user.is_management:
+        projek = Project.objects.only('client')
+        if request.method == 'POST':
+            client = request.POST['pilihan']
+            client_obj = Pengajuan_Barang.objects.filter(client_id=client)
+            context = {'projek':projek, 'pengajuan':client_obj}
+            return render(request,'finance/pengajuan-barang.html', context)
+        else:
+            context = {'projek':projek}
+            return render(request,'finance/pengajuan-barang.html', context)
+    else:
+        messages.error(request, 'Akses gagal')
+        logout(request)
+        return redirect('index') 
 
 def Client(request):
     user = request.user
@@ -952,6 +972,44 @@ def Client(request):
         messages.error(request, 'Akses gagal')
         logout(request)
         return redirect('index')
+
+class VideoCamera(object):
+    def __init__(self):
+        # Use rtsp, not rstp
+        self.video = cv2.VideoCapture("http://61.211.241.239/nphMotionJpeg?Resolution=320x240&Quality=Standard")
+
+
+    def __del__(self):
+        if self.video.isOpened():
+            self.video.release()
+
+    def get_frame(self):
+        success, frame = self.video.read()
+        if not success:
+            return None
+
+        # Encode the frame in JPEG format
+        ret, jpeg = cv2.imencode('.jpg', frame)
+        return jpeg.tobytes()
+
+# Generator function for streaming
+def gen(camera):
+    while True:
+        frame = camera.get_frame()
+        if frame is None:
+            break
+        yield (b'--frame\r\n'
+               b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n\r\n')
+
+def video_feed(request):
+    cam = VideoCamera()
+    return StreamingHttpResponse(
+        gen(cam),
+        content_type='multipart/x-mixed-replace; boundary=frame'
+    )
+
+def Client_Live(request):
+    return render(request, 'client/live-stream.html')    
 
 @login_required        
 def Logout(request):
