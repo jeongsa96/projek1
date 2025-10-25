@@ -6998,6 +6998,9 @@
   .validate select:has(~ * > .selected) + .advance-select-toggle:focus, .validate select:has(~ * > .selected) + .advance-select-toggle:focus-within {
     --input-color: var(--color-success);
   }
+  .backface-hidden {
+    backface-visibility: hidden;
+  }
   .link-info {
     --link-color: var(--color-info);
   }

@@ -4,7 +4,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth import update_session_auth_hash
 from django.core.paginator import Paginator
 from django.http import StreamingHttpResponse
-from .forms import LoginForm, RegisterForm, ProjekForm, InvoiceForm, POform, AnggaranForm, MonitoringForm, ReportForm, updateProfileForm, photoProfileForm, changePasswordForm, pengajuanForm, barangKeluarForm, dailyForm, penagihanForm
+from .forms import LoginForm, RegisterForm, ProjekForm, InvoiceForm, POform, AnggaranForm, MonitoringForm, ReportForm, updateProfileForm, photoProfileForm, changePasswordForm, pengajuanForm, barangKeluarForm, dailyForm, penagihanForm, breakdownForm
 from .models import *
 import cv2
 import threading
@@ -837,6 +837,28 @@ def Management_P(request):
         logout(request)
         return redirect('index') 
 
+def Management_BR(request):
+    user = request.user
+    if user.is_authenticated and user.is_management:
+        if request.method == 'POST':
+            form = breakdownForm(request.POST)
+            if form.is_valid():
+                form.save()
+                messages.success(request, 'input nama barang berhasil')
+                return redirect('management-br')
+            else:
+                messages.error(request, 'input data salah')
+
+        else:
+            form = breakdownForm()            
+
+        context = {'form':form}
+        return render(request,'finance/breakdown-rab.html', context)    
+    else:
+        messages.error(request, 'Akses gagal')
+        logout(request)
+        return redirect('index') 
+    
 def Client(request):
     user = request.user
     if user.is_authenticated and user.is_client:

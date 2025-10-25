@@ -123,6 +123,13 @@ class Mapping_Report(models.Model):
     aktual_mapping = models.IntegerField(null=False)
     tanggal = models.DateField(null=False)
 
+class Breakdown_RAB(models.Model):
+    client_id = models.ForeignKey(Project, null=False, on_delete=models.CASCADE)
+    nama_barang = models.CharField(max_length=100)   
+
+    def __str__(self):
+        return self.nama_barang 
+
 class Pengajuan_Barang(models.Model):
     status_po = [
         ('menunggu persetujuan', 'Menunggu Persetujuan'),
@@ -132,7 +139,7 @@ class Pengajuan_Barang(models.Model):
     ]
 
     client_id = models.ForeignKey(Project, null=False, on_delete=models.CASCADE)
-    nama_barang = models.CharField(max_length=100)
+    nama_barang = models.ForeignKey(Breakdown_RAB, null=False, on_delete=models.CASCADE)
     jumlah = models.IntegerField(null=False)
     satuan = models.CharField(max_length=20)
     tanggal = models.DateField(null=False)
@@ -178,5 +185,5 @@ class Penagihan(models.Model):
     lampiran_lokasi = models.FileField(upload_to='penagihan/lokasi/', blank=True)
     lampiran_mapping = models.FileField(upload_to='penagihan/mapping/', blank=True)
     lampiran_monitoring = models.FileField(upload_to='penagihan/monitoring/', blank=True)
-
+    
     

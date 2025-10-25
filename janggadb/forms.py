@@ -925,3 +925,37 @@ class penagihanForm(forms.ModelForm):
     class Meta:
         model = Penagihan
         fields = '__all__'     
+
+class breakdownForm(forms.ModelForm):
+    client_id = forms.ModelChoiceField(
+        queryset = Project.objects.only('id'),
+        widget = forms.Select(
+            attrs = {
+                'class':'hidden',
+                'data-select':"""{
+    "placeholder": "Pilih Client",
+    "toggleTag": "<button type=\'button\' aria-expanded=\'false\'></button>",
+    "toggleClasses": "p-2 mb-4 max-w-lg advance-select-toggle select validator select-disabled:pointer-events-none select-disabled:opacity-40",
+    "hasSearch": true,
+    "dropdownClasses": "advance-select-menu max-h-52 pt-0 overflow-y-auto",
+    "optionClasses": "advance-select-option selected:select-active",
+    "optionTemplate": "<div class=\'flex justify-between items-center w-full\'><span data-title></span></div>"
+    }""",
+            }
+        )
+    )
+    nama_barang = forms.CharField(
+        widget = forms.TextInput(
+            attrs = {
+                'class':'input validator p-2 mb-4 w-auto',
+                'id':'nama-barang',
+                'name':'nama-barang',
+                'type':'text',
+                'placeholder':'Nama Barang',
+            }
+        )
+    )
+
+    class Meta:
+        model = Breakdown_RAB
+        fields = '__all__'
