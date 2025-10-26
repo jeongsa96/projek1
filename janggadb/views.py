@@ -47,15 +47,16 @@ def index(request):
                 request.session['username'] = user.username
 
                 role_map = {
-                    'is_admin': 'admin-jangga',
+                    'is_adminProject': 'admin-jangga',
                     'is_projectManager': 'project-manager',
                     'is_management': 'management',
                     'is_logistik': 'logistik',
-                    'is_client': 'client-dashboard',
+                    'is_client': 'client',
                 }
 
                 for role, url in role_map.items():
                     if getattr(user, role):
+                        request.session['url'] = url
                         return redirect(reverse(url))
 
                 messages.error(request, 'akses tidak valid')
@@ -85,31 +86,35 @@ def Change_Password(request):
         form = changePasswordForm(user=request.user)
 
     context = {'form':form}
-    return render(request, 'admin/ganti-password.html', context)                 
+    return render(request, 'auth/ganti-password.html', context)                 
     
     
 
 @login_required
-def Admin_Profil(request, pk):
+def Profil(request, pk):
     user = User.objects.get(pk=pk)
     profile = Profile.objects.get(user__id=pk)
-    user_form = updateProfileForm(request.POST or None, request.FILES or None, instance=user)
-    photo_form = photoProfileForm(request.POST or None, request.FILES or None, instance=profile)
-    if user_form.is_valid() and photo_form.is_valid():
-        user_form.save()
-        photo_form.save()
-        messages.success(request, 'Profil anda telah diupdate ')
-        return redirect('admin-jangga')
+    if request.method == 'POST':
+        user_form = updateProfileForm(request.POST, request.FILES, instance=user)
+        photo_form = photoProfileForm(request.POST, request.FILES, instance=profile)
+        if user_form.is_valid() and photo_form.is_valid():
+            user_form.save()
+            photo_form.save()
+            messages.success(request, 'Profil anda telah diupdate ')
+            return redirect('edit-profil', pk=user.id)
+        else:
+            messages.error(request, 'Input anda salah')
     else:
-        messages.error(request, 'Input anda salah')
+        user_form = updateProfileForm(instance=user)  
+        photo_form = photoProfileForm(instance=profile)
 
     context = {'user_form':user_form,'photo_form':photo_form}                
-    return render(request, 'admin/edit-profile.html', context)
+    return render(request, 'auth/edit-profile.html', context)
 
 @login_required
 def Admin(request):   
     user = request.user
-    if user.is_authenticated and user.is_admin:
+    if user.is_authenticated and user.is_adminProject:
         import plotly.express as px
         if request.method == 'POST':
             pro = request.POST['client']
@@ -246,7 +251,7 @@ def Admin(request):
 @login_required
 def Admin_PD(request):
     user = request.user
-    if user.is_authenticated and user.is_admin:
+    if user.is_authenticated and user.is_adminProject:
         projek_client = Project.objects.only("client")
         if request.method == 'POST':
             projek_form = request.POST['pilih']
@@ -278,7 +283,7 @@ def Admin_PD(request):
 @login_required
 def Admin_MR(request):
     user = request.user
-    if user.is_authenticated and user.is_admin:
+    if user.is_authenticated and user.is_adminProject:
         if request.method == 'POST':
             form = ReportForm(request.POST)
             if form.is_valid():
@@ -298,7 +303,7 @@ def Admin_MR(request):
 @login_required
 def Admin_DR(request):
     user = request.user
-    if user.is_authenticated and user.is_admin:
+    if user.is_authenticated and user.is_adminProject:
         if request.method == 'POST':
             form = dailyForm(request.POST)
             if form.is_valid():
@@ -318,7 +323,7 @@ def Admin_DR(request):
 @login_required
 def Admin_P(request):
     user = request.user
-    if user.is_authenticated and user.is_admin:
+    if user.is_authenticated and user.is_adminProject:
         if request.method == 'POST':
             form = penagihanForm(request.POST, request.FILES)
             if form.is_valid():

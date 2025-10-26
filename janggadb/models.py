@@ -5,7 +5,7 @@ from pathlib import Path
 # create model here
 
 class User(AbstractUser):
-    is_admin = models.BooleanField('Is Admin', default=False)
+    is_adminProject = models.BooleanField('Is Admin Project', default=False)
     is_projectManager = models.BooleanField('Is Project Manager', default=False)
     is_logistik = models.BooleanField('Is Logistik', default=False)
     is_management = models.BooleanField('Is Management', default=False)
