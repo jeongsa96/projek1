@@ -1,0 +1,26 @@
+[0;1;32m●[0m nginx.service - A high performance web server and a reverse proxy server
+     Loaded: loaded (]8;;file://srv1075401/usr/lib/systemd/system/nginx.service/usr/lib/systemd/system/nginx.service]8;;; [0;1;32menabled[0m; preset: [0;1;32menabled[0m)
+     Active: [0;1;32mactive (running)[0m since Mon 2025-10-27 08:06:02 UTC; 1h 16min ago
+       Docs: ]8;;man:nginx(8)man:nginx(8)]8;;
+    Process: 66763 ExecStartPre=/usr/sbin/nginx -t -q -g daemon on; master_process on; (code=exited, status=0/SUCCESS)
+    Process: 66766 ExecStart=/usr/sbin/nginx -g daemon on; master_process on; (code=exited, status=0/SUCCESS)
+    Process: 67376 ExecReload=/usr/sbin/nginx -g daemon on; master_process on; -s reload [0;1;31m(code=exited, status=1/FAILURE)[0m
+   Main PID: 66767 (nginx)
+      Tasks: 3 (limit: 9483)
+     Memory: 4.0M (peak: 10.2M)
+        CPU: 796ms
+     CGroup: /system.slice/nginx.service
+             ├─[0;38;5;245m66767 "nginx: master process /usr/sbin/nginx -g daemon on; master_process on;"[0m
+             ├─[0;38;5;245m67245 "nginx: worker process"[0m
+             └─[0;38;5;245m67246 "nginx: worker process"[0m
+
+Oct 27 09:00:57 srv1075401 systemd[1]: Reloading nginx.service - A high performance web server and a reverse proxy server...
+Oct 27 09:00:57 srv1075401 nginx[67231]: 2025/10/27 09:00:57 [notice] 67231#67231: signal process started
+Oct 27 09:00:57 srv1075401 systemd[1]: Reloaded nginx.service - A high performance web server and a reverse proxy server.
+Oct 27 09:01:46 srv1075401 systemd[1]: Reloading nginx.service - A high performance web server and a reverse proxy server...
+Oct 27 09:01:46 srv1075401 nginx[67243]: 2025/10/27 09:01:46 [notice] 67243#67243: signal process started
+Oct 27 09:01:46 srv1075401 systemd[1]: Reloaded nginx.service - A high performance web server and a reverse proxy server.
+Oct 27 09:22:21 srv1075401 systemd[1]: Reloading nginx.service - A high performance web server and a reverse proxy server...
+Oct 27 09:22:21 srv1075401 nginx[67376]: 2025/10/27 09:22:21 [emerg] 67376#67376: open() "/etc/nginx/sites-enabled/jangga.conf" failed (2: No such file or directory) in /etc/nginx/nginx.conf:60
+Oct 27 09:22:21 srv1075401 systemd[1]: [0;1;39m[0;1;31m[0;1;39mnginx.service: Control process exited, code=exited, status=1/FAILURE[0m
+Oct 27 09:22:21 srv1075401 systemd[1]: [0;1;31m[0;1;39m[0;1;31mReload failed for nginx.service - A high performance web server and a reverse proxy server.[0m

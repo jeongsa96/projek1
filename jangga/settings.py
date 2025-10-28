@@ -143,13 +143,13 @@ USE_THOUSAND_SEPARATOR = True
 
 STATIC_URL = '/static/'
 
-STATIC_ROOT = '/var/www/projek1/staticfiles/'
+STATIC_ROOT = BASE_DIR / 'staticfiles'
 
 STATICFILES_DIRS = [BASE_DIR / 'static']  # If images are in assets/
 
 MEDIA_URL = '/data/'
 
-MEDIA_ROOT = 'var/www/projek1/data/'
+MEDIA_ROOT = BASE_DIR / 'data'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
