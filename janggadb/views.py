@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import update_session_auth_hash
+from django.core.files.storage import FileSystemStorage
 from django.core.paginator import Paginator
 from django.http import StreamingHttpResponse
 from .forms import LoginForm, RegisterForm, ProjekForm, InvoiceForm, POform, AnggaranForm, MonitoringForm, ReportForm, updateProfileForm, photoProfileForm, changePasswordForm, pengajuanForm, barangKeluarForm, dailyForm, penagihanForm, breakdownForm
@@ -842,22 +843,61 @@ def Management_P(request):
         logout(request)
         return redirect('index') 
 
-def Management_BR(request):
+def Management_RP(request):
+    engine = create_engine('postgresql+psycopg2://admin:admin@localhost:5432/jangga_db')
     user = request.user
     if user.is_authenticated and user.is_management:
+        projek = Project.objects.only('id')            
         if request.method == 'POST':
-            form = breakdownForm(request.POST)
-            if form.is_valid():
-                form.save()
-                messages.success(request, 'input nama barang berhasil')
-                return redirect('management-br')
-            else:
-                messages.error(request, 'input data salah')
+            if 'inputProjek' in request.POST:
+                pro = request.POST['pilih']
+                anggaran = Jenis_Anggaran.objects.filter(nomor_SPK_id=pro).only('nama_jenis')
+                
+                context = {'projek':projek,'pro':pro,'anggaran':anggaran}
+                return render(request, 'finance/breakdown-rab.html', context)
+            if 'inputAnggaran' in request.POST:
+                uploaded_files = request.FILES['lampiran-rab']
+                fs = FileSystemStorage()                    
+                fs.save(uploaded_files.name, uploaded_files)      
+                # simpan file ke dalam local server
+                file_name = uploaded_files.name 
 
-        else:
-            form = breakdownForm()            
+                df = pd.read_excel(r"D:/Kerja/projek1_hosting/projek1/data/" + file_name)
+                pd.set_option("display.max_rows", None)
+                pd.set_option("display.max_columns", None)
+                
+                spk = request.POST['spk']
+                df['nomor_SPK'] = spk
+                df = df.rename(columns ={'URAIAN PEKERJAAN':'nama_jenis','nomor_SPK':'nomor_SPK_id'})
 
-        context = {'form':form}
+                df.to_sql(
+                            'janggadb_jenis_anggaran', con=engine, index=False, if_exists='append'
+                )
+                messages.add_message(request, messages.SUCCESS, 'Data berhasil diinputkan')
+            if 'inputLogistik' in request.POST:
+                uploaded_files = request.FILES['lampiran-rab']
+                fs = FileSystemStorage()                    
+                fs.save(uploaded_files.name, uploaded_files)      
+                # simpan file ke dalam local server
+                file_name = uploaded_files.name 
+
+                df = pd.read_excel(r"D:/Kerja/projek1_hosting/projek1/data/" + file_name)
+                pd.set_option("display.max_rows", None)
+                pd.set_option("display.max_columns", None)  
+
+                client = request.POST.get('spk')
+                df['client'] = client
+                jenis = request.POST['kelompok']
+                df['jenis_anggaran'] = jenis
+
+                df = df.rename(columns ={'URAIAN PEKERJAAN':'nama_barang','client':'client_id_id','jenis_anggaran':'jenis_anggaran_id'})
+
+                df.to_sql(
+                            'janggadb_breakdown_rab', con=engine, index=False, if_exists='append'
+                )
+                messages.add_message(request, messages.SUCCESS, 'Data berhasil diinputkan')
+
+        context = {'projek':projek}
         return render(request,'finance/breakdown-rab.html', context)    
     else:
         messages.error(request, 'Akses gagal')
